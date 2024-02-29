@@ -1,11 +1,6 @@
->该项目源码地址：https://github.com/lastwhispers/permission
-项目在线地址：http://39.105.49.50:8080/permission/login.html
+
 初始用户：  
-系统管理员：admin/admin   
-经理：manager/manager  
-销售主管：salemanager/salemanager  
-销售员：saler/saler  
-临时工：casual/casual
+系统管理员：admin/admin
 
 #  1. 简介
 基于SSM框架简单的后台管理系统，整合spring + springmvc + shiro + mybatis + esayui。包含许多基础模块（用户管理、角色管理、菜单管理、角色权限管理、用户角色管理、日志管理、数据库监控）。
