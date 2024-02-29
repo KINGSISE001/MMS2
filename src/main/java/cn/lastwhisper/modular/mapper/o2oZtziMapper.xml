@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lastwhisper.modular.mapper.o2oZtziMapper" >
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.o2oZtzi" >
+    <id column="ID" property="id" jdbcType="INTEGER" />
+    <result column="name" property="name" jdbcType="VARCHAR" />
+    <result column="names" property="names" jdbcType="VARCHAR" />
+    <result column="mdid" property="mdid" jdbcType="INTEGER" />
+    <result column="isdandian" property="isdandian" jdbcType="VARCHAR" />
+    <result column="bzhu" property="bzhu" jdbcType="VARCHAR" />
+    <result column="sjian" property="sjian" jdbcType="TIMESTAMP" />
+    <result column="wancheng" property="wancheng" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    ID, name, names, mdid, isdandian, bzhu, sjian ,wancheng
+  </sql>
+  
+  <select id="selectByName" resultMap="BaseResultMap"  >
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_ztzi
+    where names like CONCAT('%',#{names,jdbcType=VARCHAR},'%')
+  </select>
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_ztzi
+    where mdid = #{names,jdbcType=INTEGER}
+  </select>
+  
+    <select id="selectAll" resultMap="BaseResultMap" >
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_ztzi
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from o2o_ztzi
+    where ID = #{id,jdbcType=INTEGER}
+  </delete>
+
+  <insert id="insertSelective" parameterType="cn.lastwhisper.modular.pojo.o2oZtzi" >
+    insert into o2o_ztzi
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        name,
+      </if>
+      <if test="names != null" >
+        names,
+      </if>
+      <if test="mdid != null" >
+        mdid,
+      </if>
+      <if test="isdandian != null" >
+        isdandian,
+      </if>
+      <if test="bzhu != null" >
+        bzhu,
+      </if>
+      <if test="sjian != null" >
+        sjian,
+      </if>
+      <if test="wancheng != null" >
+        wancheng,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="name != null" >
+        #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="names != null" >
+        #{names,jdbcType=VARCHAR},
+      </if>
+      <if test="mdid != null" >
+        #{mdid,jdbcType=INTEGER},
+      </if>
+      <if test="isdandian != null" >
+        #{isdandian,jdbcType=VARCHAR},
+      </if>
+      <if test="bzhu != null" >
+        #{bzhu,jdbcType=VARCHAR},
+      </if>
+      <if test="sjian != null" >
+        #{sjian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wancheng != null" >
+        #{wancheng,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.o2oZtzi" >
+    update o2o_ztzi
+    <set >
+      <if test="name != null" >
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="names != null" >
+        names = #{names,jdbcType=VARCHAR},
+      </if>
+      <if test="mdid != null" >
+        mdid = #{mdid,jdbcType=INTEGER},
+      </if>
+      <if test="isdandian != null" >
+        isdandian = #{isdandian,jdbcType=VARCHAR},
+      </if>
+      <if test="bzhu != null" >
+        bzhu = #{bzhu,jdbcType=VARCHAR},
+      </if>
+      <if test="sjian != null" >
+        sjian = #{sjian,jdbcType=TIMESTAMP},
+      </if>
+      <if test="wancheng != null" >
+        wancheng = #{wancheng,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.o2oZtzi" >
+    update o2o_ztzi
+    set name = #{name,jdbcType=VARCHAR},
+      names = #{names,jdbcType=VARCHAR},
+      mdid = #{mdid,jdbcType=INTEGER},
+      isdandian = #{isdandian,jdbcType=VARCHAR},
+      bzhu = #{bzhu,jdbcType=VARCHAR},
+      wancheng = #{wancheng,jdbcType=VARCHAR},
+      sjian = #{sjian,jdbcType=TIMESTAMP}
+    where ID = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

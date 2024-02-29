@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lastwhisper.modular.mapper.o2oBrandInfoMapper" >
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.o2oBrandInfo" >
+    <id column="appname" property="appname" jdbcType="VARCHAR" />
+    <result column="mtappid" property="mtappid" jdbcType="INTEGER" />
+    <result column="mtappkey" property="mtappkey" jdbcType="VARCHAR" />
+    <result column="brand_name" property="brandName" jdbcType="VARCHAR" />
+    <result column="brand_id" property="brandId" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    appname, mtappid, mtappkey, brand_name, brand_id
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+    select 
+    b.appname,b.mtappid,b.mtappkey,b.brand_name,b.brand_id
+	from  o2o_shop as a
+	left join o2o_brand_info as b on a.appname=b.appname
+	where a.bma = #{poicode,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
+    delete from o2o_brand_info
+    where appname = #{appname,jdbcType=VARCHAR}
+  </delete>
+  <insert id="insert" parameterType="cn.lastwhisper.modular.pojo.o2oBrandInfo" >
+    <selectKey resultType="java.lang.String" keyProperty="appname" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into o2o_brand_info (mtappid, mtappkey, brand_name, 
+      brand_id)
+    values (#{mtappid,jdbcType=INTEGER}, #{mtappkey,jdbcType=VARCHAR}, #{brandName,jdbcType=VARCHAR}, 
+      #{brandId,jdbcType=INTEGER})
+  </insert>
+  <insert id="insertSelective" parameterType="cn.lastwhisper.modular.pojo.o2oBrandInfo" >
+    <selectKey resultType="java.lang.String" keyProperty="appname" order="AFTER" >
+      SELECT LAST_INSERT_ID()
+    </selectKey>
+    insert into o2o_brand_info
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="mtappid != null" >
+        mtappid,
+      </if>
+      <if test="mtappkey != null" >
+        mtappkey,
+      </if>
+      <if test="brandName != null" >
+        brand_name,
+      </if>
+      <if test="brandId != null" >
+        brand_id,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="mtappid != null" >
+        #{mtappid,jdbcType=INTEGER},
+      </if>
+      <if test="mtappkey != null" >
+        #{mtappkey,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        #{brandId,jdbcType=INTEGER},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.o2oBrandInfo" >
+    update o2o_brand_info
+    <set >
+      <if test="mtappid != null" >
+        mtappid = #{mtappid,jdbcType=INTEGER},
+      </if>
+      <if test="mtappkey != null" >
+        mtappkey = #{mtappkey,jdbcType=VARCHAR},
+      </if>
+      <if test="brandName != null" >
+        brand_name = #{brandName,jdbcType=VARCHAR},
+      </if>
+      <if test="brandId != null" >
+        brand_id = #{brandId,jdbcType=INTEGER},
+      </if>
+    </set>
+    where appname = #{appname,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.o2oBrandInfo" >
+    update o2o_brand_info
+    set mtappid = #{mtappid,jdbcType=INTEGER},
+      mtappkey = #{mtappkey,jdbcType=VARCHAR},
+      brand_name = #{brandName,jdbcType=VARCHAR},
+      brand_id = #{brandId,jdbcType=INTEGER}
+    where appname = #{appname,jdbcType=VARCHAR}
+  </update>
+</mapper>

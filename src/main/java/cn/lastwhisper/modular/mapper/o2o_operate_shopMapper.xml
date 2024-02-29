@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.o2o_operate_shopMapper">
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.o2o_operate_shop">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="shop_id" jdbcType="INTEGER" property="shopId" />
+    <result column="dwdzhi" jdbcType="VARCHAR" property="dwdzhi" />
+    <result column="dwcity" jdbcType="VARCHAR" property="dwcity" />
+    <result column="dwsquan" jdbcType="VARCHAR" property="dwsquan" />
+    <result column="bzhu" jdbcType="VARCHAR" property="bzhu" />
+    <result column="qymcheng" jdbcType="VARCHAR" property="qymcheng" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, shop_id, dwdzhi, dwcity, dwsquan, qymcheng
+  </sql>
+  <select id="selectshopid"  resultMap="BaseResultMap">
+  select a.shop_id,b.dwcity,b.dwcity as dwsquan ,b.dwdzhi from  o2o_operate_monitor_goods a
+LEFT JOIN o2o_operate_shop as b on a.shop_id=b.shop_id 
+where ztai ='0'
+group by a.shop_id,b.dwcity,b.dwcity ,b.dwdzhi LIMIT 1
+  </select>
+  
+    <select id="selectdwsq"  resultMap="BaseResultMap">
+  	select id,dwcshi as dwcity,dwdzhi  from o2o_location_squanlist where
+  	<![CDATA[ dwcshi <>'' and dwcshi is not null and zhuangtai=0]]>
+  	 <![CDATA[and dwdzhi <>'' and dwdzhi is not null]]>
+  	 limit 1 
+  </select>
+  
+  <update id="updateDwsqZtai" parameterType="java.lang.Integer">
+ update o2o_location_squanlist set 
+ zhuangtai=#{ztai,jdbcType=INTEGER},
+ <if test="newdz != null">
+ bzhu=#{newdz,jdbcType=INTEGER},
+ </if>
+ updatetime=now() 
+ where
+  id=#{dwid,jdbcType=INTEGER}; 
+  </update>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from o2o_operate_shop
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.o2o_operate_shop">
+    update o2o_operate_shop
+    <set>
+      <if test="shopId != null">
+        shop_id = #{shopId,jdbcType=INTEGER},
+      </if>
+      <if test="dwdzhi != null">
+        dwdzhi = #{dwdzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="dwcity != null">
+        dwcity = #{dwcity,jdbcType=VARCHAR},
+      </if>
+      <if test="dwsquan != null">
+        dwsquan = #{dwsquan,jdbcType=VARCHAR},
+      </if>
+      <if test="qymcheng != null">
+        qymcheng = #{qymcheng,jdbcType=VARCHAR},
+      </if>
+     
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.o2o_operate_shop">
+    update o2o_operate_shop
+    set shop_id = #{shopId,jdbcType=INTEGER},
+      dwdzhi = #{dwdzhi,jdbcType=VARCHAR},
+      dwcity = #{dwcity,jdbcType=VARCHAR},
+      dwsquan = #{dwsquan,jdbcType=VARCHAR},
+      qymcheng = #{qymcheng,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

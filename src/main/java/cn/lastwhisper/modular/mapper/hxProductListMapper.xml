@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.hxProductListMapper">
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.hxProductList">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="company" jdbcType="INTEGER" property="company" />
+    <result column="sys_userid" jdbcType="INTEGER" property="sysUserid" />
+    <result column="user_id" jdbcType="INTEGER" property="userId" />
+    <result column="companyname" jdbcType="VARCHAR" property="companyname" />
+    <result column="ddkey" jdbcType="VARCHAR" property="ddkey" />
+    <result column="appId" jdbcType="VARCHAR" property="appid" />
+    <result column="appKey" jdbcType="VARCHAR" property="appkey" />
+    <result column="domainAddress" jdbcType="VARCHAR" property="domainaddress" />
+    <result column="accountName" jdbcType="VARCHAR" property="accountname" />
+    <result column="isdelete" jdbcType="INTEGER" property="isdelete" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    id, company, sys_userid, user_id, companyname, ddkey, appId, appKey, domainAddress, 
+    accountName, isdelete
+  </sql>
+  <select id="selectProductlistByName" parameterType="cn.lastwhisper.modular.pojo.hxProductList"
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		hx_productlist
+		<if test="companyname!=null">
+			where
+			companyname like '%${companyname}%'
+		</if>
+	</select>
+	
+	<!-- parameterType="java.lang.Integer"  -->
+	 <select id="selectProductlistByUserId" 
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		hx_productlist
+			where
+			user_id = #{userId}
+	</select>
+	
+	
+	
+	<!--查询启用的帐  -->
+	 <select id="selectProductlist" 
+		resultMap="BaseResultMap">
+		SELECT
+		<include refid="Base_Column_List" />
+		FROM
+		hx_productlist
+		where
+		 isdelete = 0
+	</select>
+	
+	
+	
+  <delete id="deleteByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.hxProductList">
+    delete from hx_productlist
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.hxProductList">
+    update hx_productlist
+    <set>
+      <if test="sysUserid != null">
+        sys_userid = #{sysUserid,jdbcType=INTEGER},
+      </if>
+      <if test="userId != null">
+        user_id = #{userId,jdbcType=INTEGER},
+      </if>
+      <if test="companyname != null">
+        companyname = #{companyname,jdbcType=VARCHAR},
+      </if>
+      <if test="ddkey != null">
+        ddkey = #{ddkey,jdbcType=VARCHAR},
+      </if>
+      <if test="appid != null">
+        appId = #{appid,jdbcType=VARCHAR},
+      </if>
+      <if test="appkey != null">
+        appKey = #{appkey,jdbcType=VARCHAR},
+      </if>
+      <if test="domainaddress != null">
+        domainAddress = #{domainaddress,jdbcType=VARCHAR},
+      </if>
+      <if test="accountname != null">
+        accountName = #{accountname,jdbcType=VARCHAR},
+      </if>
+      <if test="isdelete != null">
+        isdelete = #{isdelete,jdbcType=INTEGER},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+      and company = #{company,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.hxProductList">
+    update hx_productlist
+    set sys_userid = #{sysUserid,jdbcType=INTEGER},
+      user_id = #{userId,jdbcType=INTEGER},
+      companyname = #{companyname,jdbcType=VARCHAR},
+      ddkey = #{ddkey,jdbcType=VARCHAR},
+      appId = #{appid,jdbcType=VARCHAR},
+      appKey = #{appkey,jdbcType=VARCHAR},
+      domainAddress = #{domainaddress,jdbcType=VARCHAR},
+      accountName = #{accountname,jdbcType=VARCHAR},
+      isdelete = #{isdelete,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+      and company = #{company,jdbcType=INTEGER}
+  </update>
+</mapper>

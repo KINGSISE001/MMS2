@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.sqmdMapper">
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.sqmd">
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="sqid" jdbcType="INTEGER" property="sqid" />
+    <result column="dwcity" jdbcType="VARCHAR" property="dwcity" />
+    <result column="dwdzhi" jdbcType="VARCHAR" property="dwdzhi" />
+    <result column="md" jdbcType="VARCHAR" property="md" />
+    <result column="jli" jdbcType="VARCHAR" property="jli" />
+    <result column="xliang" jdbcType="VARCHAR" property="xliang" />
+    <result column="pson" jdbcType="VARCHAR" property="pson" />
+    <result column="ypson" jdbcType="VARCHAR" property="ypson" />
+    <result column="pfen" jdbcType="VARCHAR" property="pfen" />
+    <result column="sf24h" jdbcType="VARCHAR" property="sf24h" />
+  </resultMap>
+  <sql id="Base_Column_List">
+     sqid,dwcity,dwdzhi,md, jli,xliang,pson,ypson,pfen,sf24h
+  </sql>
+  
+  
+  <insert id="insertMdxxi" parameterType="cn.lastwhisper.modular.pojo.sqmd" >
+  insert into down_store (
+ sqid,task_id,dwshi,dlwzhi,dpmcheng,dwxdwzjli,xliang,qsjia,ysjli,dppfeng,sf24h
+  ) values  
+  <foreach collection="lists" item="it"  separator=",">
+  (
+  #{it.sqid,jdbcType=INTEGER},
+   #{it.sqid,jdbcType=INTEGER},
+  #{it.dwcity,jdbcType=VARCHAR},
+  #{it.dwdzhi,jdbcType=VARCHAR},
+  
+  #{it.md,jdbcType=VARCHAR},
+  #{it.jli,jdbcType=VARCHAR},
+   #{it.xliang,jdbcType=VARCHAR},
+   #{it.pson,jdbcType=VARCHAR},
+   #{it.ypson,jdbcType=VARCHAR},
+    #{it.pfen,jdbcType=VARCHAR},
+    #{it.sf24h,jdbcType=VARCHAR}
+  )
+  </foreach>
+  </insert>
+  
+  
+  <select id="findscdpxxss" resultType="map">
+  <![CDATA[ select id , dwcity,dwdzhi,mcheng from o2o_store where dwcity<>''and dwdzhi <>'' and ztai=0 GROUP BY dwcity,dwdzhi  LIMIT 1]]>
+  </select>
+  
+  <update id="upDmXinXiZhuangtai" parameterType="java.lang.String" >
+  update o2o_store 
+  <set>
+  ztai=#{zhuangtai,jdbcType=VARCHAR}
+  </set>
+  where id = #{mdid,jdbcType=VARCHAR}
+  </update>
+  
+  <update id="upDmXinXi" parameterType="map" >
+  update o2o_store 
+  <set>
+  dzhi=#{dz,jdbcType=VARCHAR},
+  yysjian=#{pssj,jdbcType=VARCHAR},
+  dhua=#{dh,jdbcType=VARCHAR},
+  zkou=#{hd,jdbcType=VARCHAR}
+  </set>
+  where id = #{mdid,jdbcType=VARCHAR}
+  </update>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from down_location_sqmd
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from down_location_sqmd
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.sqmd">
+    update down_location_sqmd
+    <set>
+      <if test="sqid != null">
+        sqid = #{sqid,jdbcType=INTEGER},
+      </if>
+      <if test="dwcity != null">
+        dwcity = #{dwcity,jdbcType=VARCHAR},
+      </if>
+      <if test="dwdzhi != null">
+        dwdzhi = #{dwdzhi,jdbcType=VARCHAR},
+      </if>
+      <if test="md != null">
+        md = #{md,jdbcType=VARCHAR},
+      </if>
+      <if test="jli != null">
+        jli = #{jli,jdbcType=VARCHAR},
+      </if>
+      <if test="xliang != null">
+        xliang = #{xliang,jdbcType=VARCHAR},
+      </if>
+      <if test="pson != null">
+        pson = #{pson,jdbcType=VARCHAR},
+      </if>
+      <if test="ypson != null">
+        ypson = #{ypson,jdbcType=VARCHAR},
+      </if>
+      <if test="pfen != null">
+        pfen = #{pfen,jdbcType=VARCHAR},
+      </if>
+      <if test="sf24h != null">
+        sf24h = #{sf24h,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.sqmd">
+    update down_location_sqmd
+    set sqid = #{sqid,jdbcType=INTEGER},
+      dwcity = #{dwcity,jdbcType=VARCHAR},
+      dwdzhi = #{dwdzhi,jdbcType=VARCHAR},
+      md = #{md,jdbcType=VARCHAR},
+      jli = #{jli,jdbcType=VARCHAR},
+      xliang = #{xliang,jdbcType=VARCHAR},
+      pson = #{pson,jdbcType=VARCHAR},
+      ypson = #{ypson,jdbcType=VARCHAR},
+      pfen = #{pfen,jdbcType=VARCHAR},
+      sf24h = #{sf24h,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+</mapper>

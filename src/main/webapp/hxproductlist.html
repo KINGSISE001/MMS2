@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>海翔帐套</title>
+<link rel="stylesheet" type="text/css"
+	href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="ui/date.js"></script>
+<script type="text/javascript" src="js/crud.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript" src="js/download.js"></script>
+<script type="text/javascript">
+	//用于search.js自动补全
+	var _url = 'jfen/productList';
+	var _value = 'companyname';
+	//用于crud.js的esayui初始参数
+	var name = "jfen/product";
+	var title = '叮咚相关';
+	var idField = 'id';
+	var height = 300;
+	var width = 300;
+	var columns = [ [ {
+		field : 'company',
+		title : '您在企叮咚的编号',
+		width : 100
+	}, {
+		field : 'userId',
+		title : '您在企叮咚的注册邀请码',
+		width : 100
+	}, {
+		field : 'ddkey',
+		title : '企叮咚后台key',
+		width : 100
+	}, {
+		field : 'appid',
+		title : '海翔appid',
+		width : 100
+	}, {
+		field : 'appkey',
+		title : '海翔Key',
+		width : 100
+	}, {
+		field : 'domainaddress',
+		title : '海翔地址',
+		width : 150
+	}, {
+		field : 'accountname',
+		title : '海翔账套',
+		width : 100
+	}, {
+		field : 'isdelete',
+		title : '是否启用',
+		width : 100,
+		formatter : function(val, row) {
+			if (row.isdelete == 1) {
+				return "<div style='color:#F75000;'>停用</div>";
+			} else if (row.isdelete == 0) {
+				return "<div style='color:#006000;'>启用</div>";
+			}
+		}
+	}, ] ];
+</script>
+</head>
+<body class="easyui-layout">
+	<!--搜索区  -->
+	<div data-options="region:'north',title:'查询'"
+		style="padding: 4px; background-color: #eee; height: 80px">
+		<form id="searchForm">
+			<table >
+				<tr>
+					<td>企叮咚名称 ：</td>
+					<td><input name="companyname" class="easyui-combobox"
+						id="inputtable" /></td>
+					<td><a class="easyui-linkbutton"
+						data-options="iconCls:'icon-search'" id="btnSearch">查询</a></td>
+					<td><a class="easyui-linkbutton"
+						data-options="iconCls:'icon-remove'" id="btnReset">重置</a></td>
+			</table>
+		</form>
+	</div>
+	<!-- 数据表格区 -->
+	<div data-options="region:'center',collapsible:true,split:true"
+		style="width: 600px;">
+		<table id="grid"></table>
+	</div>
+	<!-- 添加、修改 -->
+	<div id="editDlg" class="easyui-window" data-options="closed:true">
+		<form id="editForm">
+		<div>请认真填写</div>
+			<input name="id" type="hidden">
+			<table>
+				<tr>
+					<td>企叮咚的编号</td>
+					<td><input name="company" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'编号不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>企叮咚邀请码</td>
+					<td><input name="userId" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'邀请码不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>企叮咚名称</td>
+					<td><input name="companyname" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'名称不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>企叮咚后台key</td>
+					<td><input name="ddkey" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'key不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>海翔appid</td>
+					<td><input name="appid" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'海翔appid不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>海翔Key</td>
+					<td><input name="appkey" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'海翔Key不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>海翔地址</td>
+					<td><input name="domainaddress" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'海翔地址不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>海翔账套</td>
+					<td><input name="accountname" class="easyui-validatebox"
+						data-options="
+					required:true,missingMessage:'海翔账套不能为空!'
+					">
+					</td>
+				</tr>
+				<tr>
+					<td>是否启用</td>
+					<td><select id="cc" name="isdelete" class="easyui-combobox"
+						style="width: 100px; disabled: false;" panelHeight="auto"
+						data-options="required:true,missingMessage:'类型不能为空!'">
+							<option value="0" selected>启用</option>
+							<option value="1">停用</option>
+					</select></td>
+				</tr>
+
+			</table>
+			<button id="btnSave" type="button">保存</button>
+		</form>
+	</div>
+	<!-- 导入窗口 -->
+	<div id="importDlg" style="padding: 2px;">
+		<form id="importForm" enctype="multipart/form-data">
+			导入文件:<input type="file" name="file">
+		</form>
+	</div>
+</body>
+</html>

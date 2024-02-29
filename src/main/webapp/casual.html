@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>美团订单页</title>
+<link rel="stylesheet" type="text/css"
+	href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="ui/date.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript" src="js/download.js"></script>
+<script type="text/javascript">
+	//用于search.js自动补全
+	var _url = 'order/PullOrders';
+	var _value = 'orderId';
+	//用于crud.js的esayui初始参数
+	var name = "order/PullOrders";
+	var title = '订单管理';
+	var idField = 'orderId';
+	var height = 300;
+	var width = 300;
+	
+	var columns = [ [  {
+		field : 'appPoiCode',
+		title : '美团门店ID',
+		width : 50
+		
+	}, {
+		field : 'wmPoiName',
+		title : '店名',
+		width : 100
+	}, {
+		field : 'wmPoiPhone',
+		title : '门店电话',
+		width : 100
+	},{
+		field : 'total',
+		title : '本单顾客实际支付',
+		width : 50
+	},{
+		field : 'originalPrice',
+		title : '订单的总原价',
+		width : 50
+	},{
+		field : 'extras',
+		title : '订单优惠信息',
+		width : 100
+	},{
+		field : 'date',
+		title : '订单日期',
+		width : 100
+	},{
+		field : 'recipientName',
+		title : '客户姓名',
+		width : 100
+	},{
+		field : 'recipientAddress',
+		title : '客户地址',
+		width : 100
+	}, ] ];
+	
+	function getSelected(){
+	var row = $('#grid').datagrid('getSelected');
+	if (row){
+		 //异步请求
+	    $.ajax({
+	        url:'/order/PullOrdersDetail',
+	        type:"POST",
+	        data:{"orderId":row.orderId},
+	        success:function(data){
+	            //data为后台返回值。我们这里后台返回的是map类型。map.put("latiao":3.5);所以到前台取值方式：
+	     
+				var da = eval(data.rows);
+				reLodadDateGrid(da);
+				
+				//$.messager.alert('详情',htm);
+				//$("#mylist").html(htm);
+				//$('#w').window('open');
+	        }
+	    });
+	//	$("#grid").datagrid('clearSelections');//清空选中项
+	};
+
+	}
+	/*
+	 * 组装dataGrid数据
+	 */
+	function reLodadDateGrid(data)
+	{
+		var values = [];
+		 for ( var i = 0; i <data.length; i++) {
+	         var a = {
+	             'orderId' : data[i].orderId,
+	             'foodName' : data[i].foodName, 
+	             'skuId' : data[i].skuId,
+	             'actualPrice' : data[i].actualPrice,
+	             'originalPrice' : data[i].originalPrice,
+	             'price' : data[i].price,
+	             'quantity' : data[i].quantity,
+	             'upc' : data[i].upc
+	         };
+	         values.push(a);
+	     }
+		 $('#dg').datagrid('loadData', values);
+	}
+
+</script>
+</head>
+<body class="easyui-layout">
+	
+<!--搜索区  -->
+	<div data-options="region:'north',title:'查询'"
+		style="padding: 4px; background-color: #eee; height: 80px">
+		<form id="searchForm">
+			<table cellpadding="5">
+				<tr>
+					<td>订单ID ：</td>
+					<td><input name="orderId" class="textbox"
+						id="inputtable" /></td>
+						<td>店名：</td>
+						<td><input name="wmPoiName" class="textbox"
+						id="inputtable" /></td>
+					<td><a class="easyui-linkbutton"
+						data-options="iconCls:'icon-search'" id="btnSearch">查询</a></td>
+					<td><a class="easyui-linkbutton"
+						data-options="iconCls:'icon-remove'" id="btnReset">重置</a></td>
+			</table>
+		</form>
+	</div>
+	
+
+	<!-- 数据表格区 -->
+	<div data-options="region:'center',collapsible:true,split:true"style="width: 100%;">
+		<table id="grid"></table>
+		
+
+	<table  id="dg" class="easyui-datagrid" title="订单明细" style="width:1000px;height:500px"
+			data-options="region:'center',collapsible:true,split:true">
+		<thead>
+			<tr>
+				<th data-options="field:'orderId',width:150">orderId</th>
+				<th data-options="field:'foodName',width:250">foodName</th>
+				<th data-options="field:'skuId',width:150">SKU</th>
+				<th data-options="field:'actualPrice',width:80,align:'right'">实际价</th>
+				<th data-options="field:'originalPrice',width:80,align:'right'">原价</th>
+				<th data-options="field:'price',width:50">price</th>
+				<th data-options="field:'quantity',width:60,align:'center'">数量</th>
+				<th data-options="field:'upc',width:110,align:'center'">UPC</th>
+			</tr>
+		</thead>
+	</table>
+	
+		
+	</div>
+
+
+
+
+
+</body>
+</html>

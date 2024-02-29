@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title></title>
+<link rel="stylesheet" type="text/css"
+	href="ui/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="ui/themes/icon.css">
+<script type="text/javascript" src="ui/jquery.min.js"></script>
+<script type="text/javascript" src="ui/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="ui/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="ui/jquery.serializejson.min.js"></script>
+<script type="text/javascript" src="ui/date.js"></script>
+<script type="text/javascript" src="js/order.js"></script>
+<script type="text/javascript" src="js/search.js"></script>
+<script type="text/javascript" src="js/download.js"></script>
+<script type="text/javascript">
+	//用于search.js自动补全
+	var _url = 'mt/find';
+	var _value = 'id';
+	//用于crud.js的esayui初始参数
+	var name = "mt/find";
+	var title = '抓取店铺管理';
+	var idField = 'id';
+	var height = 300;
+	var width = 300;
+
+	var columns = [ [ {
+		field : 'leixing',
+		title : '类型',
+		width : 20
+	},  {
+		field : 'weizhi',
+		title : '位置',
+		width : 20
+	}, {
+		field : 'sousuo',
+		title : '搜索',
+		width : 30
+	}, {
+		field : 'dizhi',
+		title : '地址',
+		width : 50
+		
+	},{
+		field : 'dm',
+		title : '店名',
+		width : 50
+	},{
+		field : 'zhuangtai',
+		title : '状态',
+		width : 30,
+		formatter: function (val, row) {
+	        if (row.zhuangtai == 2){
+	        	 return "<div style='color:#006000;'>已完成</div>";
+	        }else if (row.zhuangtai == 0){
+	        	 return "<div style='color:#F75000;'>数据未拉取</div>";
+	        }else if (row.zhuangtai == 1){
+	        	 return "<div style='color:#6F00D2;'>数据正在拉取</div>";
+	        }else if (row.zhuangtai == 5){
+	        	 return "<div style='color:red;'>异常需修改</div>";
+	        }else{
+	            return "<div style='color:gray;'>未知</div>";
+	        }
+	    }
+	} ] ];
+	
+	function getSelected(){
+	
+	}
+	$('#cc').combo({
+	     required:true,
+	     multiple:true
+	 });
+	$('#cc').combobox('setValues', ['001','002']);
+	$('#cc').combobox('setValue', '001');
+</script>
+</head>
+<body class="easyui-layout">
+
+	<!--搜索区  -->
+	<div data-options="region:'north',title:'查询'"
+		style="padding: 4px; background-color: #eee; height: 80px">
+		<form id="searchForm">
+			<table cellpadding="5">
+				<tr>
+					<td>店名：</td>
+					<td><input name="dm" class="textbox" id="inputtable" /></td>
+					<td><a class="easyui-linkbutton"
+						data-options="iconCls:'icon-search'" id="btnSearch">查询</a></td>
+					<td><a class="easyui-linkbutton"
+						data-options="iconCls:'icon-remove'" id="btnReset">重置</a></td>
+			</table>
+		</form>
+	</div>
+
+
+	<!-- 数据表格区 -->
+	<div data-options="region:'center',collapsible:true,split:true" style="width:800px;height:500px">
+		<table id="grid" ></table>
+	</div>
+<!-- 添加、修改 -->
+	<div id="editDlg" class="easyui-window" data-options="closed:true">
+		<form id="editForm">
+			<input name="id" type="hidden">
+			<table>
+			<tr>
+					<td>类型</td>
+					<td>
+	    				<select id="cc" name="leixing" class="easyui-combobox"
+style="width:100px; disabled:false;"panelHeight="auto" data-options="required:true,missingMessage:'类型不能为空!'">
+<option value="美团" selected>美团</option>
+<option value="其他">其他</option>
+</select>
+	    			</td>
+				</tr>
+				<tr>
+					<td>位置</td>
+					<td><input type="text" name="weizhi" class="easyui-validatebox"data-options="required:true,missingMessage:'位置不能为空!'">
+					</td>
+				</tr>
+				<tr>
+					<td>搜索</td>
+					<td><input type="text" name="sousuo" class="easyui-validatebox"data-options="required:true,missingMessage:'搜索不能为空!'"></td>
+				</tr>
+				<tr>
+					<td>地址</td>
+					<td><input type="text" name="dizhi" class="easyui-validatebox"data-options="required:true,missingMessage:'地址不能为空!'"></td>
+				</tr>
+				<tr>
+					<td>店名</td>
+					<td><input name="dm" type="text" class="easyui-validatebox"data-options="required:true,missingMessage:'位置不能为空!'"></td>
+				</tr>	
+				<tr>
+					<td>状态</td>
+					<td><input name="zhuangtai" type="text" class="easyui-validatebox" data-options="required:true,missingMessage:'状态不能为空!'" ></td>
+				</tr>
+				<tr>
+					<td>备注</td>
+					<td><input name="bzhu" type="text" class="easyui-validatebox"></td>
+				</tr>
+			</table>
+			<button id="btnSave" type="button">保存</button>
+		</form>
+	</div>
+</body>
+</html>

@@ -1,0 +1,155 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.medicineMapper">
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.medicine">
+    <id column="id" jdbcType="VARCHAR" property="id" />
+    <result column="poi_code" jdbcType="VARCHAR" property="poiCode" />
+    <result column="poi_name" jdbcType="VARCHAR" property="poiName" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="app_medicine_code" jdbcType="VARCHAR" property="appMedicineCode" />
+    <result column="upc" jdbcType="VARCHAR" property="upc" />
+    <result column="medicine_no" jdbcType="VARCHAR" property="medicineNo" />
+    <result column="spec" jdbcType="VARCHAR" property="spec" />
+    <result column="Discounted_price" jdbcType="VARCHAR" property="discountedPrice" />
+    <result column="price" jdbcType="VARCHAR" property="price" />
+    <result column="stock" jdbcType="VARCHAR" property="stock" />
+    <result column="category_code" jdbcType="VARCHAR" property="categoryCode" />
+    <result column="category_name" jdbcType="VARCHAR" property="categoryName" />
+    <result column="is_sold_out" jdbcType="VARCHAR" property="isSoldOut" />
+    <result column="bao_pin" jdbcType="VARCHAR" property="baoPin" />
+     <result column="updatetime" jdbcType="VARCHAR" property="updateTime" />
+    
+    <result column="lai_yuan" jdbcType="VARCHAR" property="laiYuan" />
+    <result column="Update_result" jdbcType="VARCHAR" property="updateResult" />
+  </resultMap>
+  
+  
+    <insert  id="InsertMedicine"  parameterType="cn.lastwhisper.modular.pojo.medicine" >
+
+    
+  insert into o2o_shop_goods (
+  <include refid="Base_Column_List" />
+  ) values
+<foreach collection="lists" item="it"  separator=",">
+(
+  		#{it.id,jdbcType=VARCHAR},
+         #{it.poiCode,jdbcType=VARCHAR},
+       #{it.poiName,jdbcType=VARCHAR},
+       #{it.name,jdbcType=VARCHAR},
+       #{it.appMedicineCode,jdbcType=VARCHAR},
+       #{it.upc,jdbcType=VARCHAR},
+        #{it.medicineNo,jdbcType=VARCHAR},
+        #{it.spec,jdbcType=VARCHAR},
+      #{it.discountedPrice,jdbcType=VARCHAR},
+      #{it.price,jdbcType=VARCHAR},
+      #{it.stock,jdbcType=VARCHAR},
+      #{it.categoryCode,jdbcType=VARCHAR},
+      #{it.categoryName,jdbcType=VARCHAR},
+      #{it.isSoldOut,jdbcType=VARCHAR},
+       #{it.baoPin,jdbcType=VARCHAR},
+       #{it.updateTime,jdbcType=VARCHAR},
+    #{it.laiYuan,jdbcType=VARCHAR},
+      #{it.updateResult,jdbcType=VARCHAR}
+)
+      </foreach>
+      ON DUPLICATE KEY UPDATE
+      id=VALUES(id);
+  </insert>
+  
+  <sql id="Base_Column_List">
+    id, poi_code, poi_name, name, app_medicine_code, upc, medicine_no, spec, Discounted_price, 
+    price, stock, category_code, category_name, is_sold_out, bao_pin,updatetime, lai_yuan, Update_result
+  </sql>
+  
+  
+    <select id="findallcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+    select count(*)
+    from o2o_shop_goods where 
+	poi_code = #{poiCode,jdbcType=VARCHAR}
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_shop_goods
+    where id = #{id,jdbcType=VARCHAR}
+  </select>
+  <delete id="deleteByPrimaryPoiCode" parameterType="java.lang.String" >
+    delete from o2o_shop_goods
+    where poi_code = #{poiCode,jdbcType=VARCHAR}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.medicine">
+    update o2o_shop_goods
+    <set>
+      <if test="poiCode != null">
+        poi_code = #{poiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="poiName != null">
+        poi_name = #{poiName,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="appMedicineCode != null">
+        app_medicine_code = #{appMedicineCode,jdbcType=VARCHAR},
+      </if>
+      <if test="upc != null">
+        upc = #{upc,jdbcType=VARCHAR},
+      </if>
+      <if test="medicineNo != null">
+        medicine_no = #{medicineNo,jdbcType=VARCHAR},
+      </if>
+      <if test="spec != null">
+        spec = #{spec,jdbcType=VARCHAR},
+      </if>
+      <if test="discountedPrice != null">
+        Discounted_price = #{discountedPrice,jdbcType=VARCHAR},
+      </if>
+      <if test="price != null">
+        price = #{price,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryCode != null">
+        category_code = #{categoryCode,jdbcType=VARCHAR},
+      </if>
+      <if test="categoryName != null">
+        category_name = #{categoryName,jdbcType=VARCHAR},
+      </if>
+      <if test="isSoldOut != null">
+        is_sold_out = #{isSoldOut,jdbcType=VARCHAR},
+      </if>
+      <if test="baoPin != null">
+        bao_pin = #{baoPin,jdbcType=VARCHAR},
+      </if>
+      <if test="laiYuan != null">
+        lai_yuan = #{laiYuan,jdbcType=VARCHAR},
+      </if>
+      <if test="updateResult != null">
+        Update_result = #{updateResult,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.medicine">
+    update o2o_shop_goods
+    set poi_code = #{poiCode,jdbcType=VARCHAR},
+      poi_name = #{poiName,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      app_medicine_code = #{appMedicineCode,jdbcType=VARCHAR},
+      upc = #{upc,jdbcType=VARCHAR},
+      medicine_no = #{medicineNo,jdbcType=VARCHAR},
+      spec = #{spec,jdbcType=VARCHAR},
+      Discounted_price = #{discountedPrice,jdbcType=VARCHAR},
+      price = #{price,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=VARCHAR},
+      category_code = #{categoryCode,jdbcType=VARCHAR},
+      category_name = #{categoryName,jdbcType=VARCHAR},
+      is_sold_out = #{isSoldOut,jdbcType=VARCHAR},
+      bao_pin = #{baoPin,jdbcType=VARCHAR},
+      lai_yuan = #{laiYuan,jdbcType=VARCHAR},
+      Update_result = #{updateResult,jdbcType=VARCHAR}
+    where id = #{id,jdbcType=VARCHAR}
+  </update>
+</mapper>

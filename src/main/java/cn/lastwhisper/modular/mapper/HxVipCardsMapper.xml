@@ -1,0 +1,600 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.HxVipCardsMapper">
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.HxVipCards">
+    <id column="UUID" jdbcType="VARCHAR" property="UUID" />
+    <result column="companyId" jdbcType="INTEGER" property="companyId" />
+    <result column="vipid" jdbcType="INTEGER" property="vipid" />
+    <result column="deleted" jdbcType="INTEGER" property="deleted" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="code" jdbcType="VARCHAR" property="code" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="pinyin" jdbcType="VARCHAR" property="pinyin" />
+    <result column="sex" jdbcType="VARCHAR" property="sex" />
+    <result column="tel" jdbcType="VARCHAR" property="tel" />
+    <result column="birthday" jdbcType="VARCHAR" property="birthday" />
+    <result column="address" jdbcType="VARCHAR" property="address" />
+    <result column="comment" jdbcType="VARCHAR" property="comment" />
+    <result column="paperpype" jdbcType="VARCHAR" property="paperpype" />
+    <result column="idcard" jdbcType="VARCHAR" property="idcard" />
+    <result column="ctid" jdbcType="INTEGER" property="ctid" />
+    <result column="inputdate" jdbcType="VARCHAR" property="inputdate" />
+    <result column="inputman" jdbcType="INTEGER" property="inputman" />
+    <result column="validdate" jdbcType="VARCHAR" property="validdate" />
+    <result column="yid" jdbcType="INTEGER" property="yid" />
+    <result column="inimoney" jdbcType="INTEGER" property="inimoney" />
+    <result column="totalbuymoney" jdbcType="REAL" property="totalbuymoney" />
+    <result column="savemoney" jdbcType="INTEGER" property="savemoney" />
+    <result column="intergralye" jdbcType="INTEGER" property="intergralye" />
+    <result column="iniintergral" jdbcType="REAL" property="iniintergral" />
+    <result column="intergral" jdbcType="INTEGER" property="intergral" />
+    <result column="buycount" jdbcType="INTEGER" property="buycount" />
+    <result column="loginpass" jdbcType="VARCHAR" property="loginpass" />
+    <result column="remaindermoney" jdbcType="INTEGER" property="remaindermoney" />
+    <result column="ticketmoney" jdbcType="INTEGER" property="ticketmoney" />
+    <result column="modifydate" jdbcType="VARCHAR" property="modifydate" />
+    <result column="countbegin" jdbcType="VARCHAR" property="countbegin" />
+    <result column="countend" jdbcType="VARCHAR" property="countend" />
+    <result column="countcount" jdbcType="INTEGER" property="countcount" />
+    <result column="other1" jdbcType="VARCHAR" property="other1" />
+    <result column="other2" jdbcType="VARCHAR" property="other2" />
+    <result column="other3" jdbcType="VARCHAR" property="other3" />
+    <result column="other4" jdbcType="VARCHAR" property="other4" />
+    <result column="other5" jdbcType="VARCHAR" property="other5" />
+    <result column="other6" jdbcType="VARCHAR" property="other6" />
+    <result column="other7" jdbcType="VARCHAR" property="other7" />
+    <result column="other8" jdbcType="VARCHAR" property="other8" />
+    <result column="other9" jdbcType="VARCHAR" property="other9" />
+    <result column="other10" jdbcType="VARCHAR" property="other10" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="age" jdbcType="VARCHAR" property="age" />
+    <result column="industry" jdbcType="VARCHAR" property="industry" />
+    <result column="post" jdbcType="VARCHAR" property="post" />
+    <result column="elder" jdbcType="VARCHAR" property="elder" />
+    <result column="company" jdbcType="VARCHAR" property="company" />
+    <result column="sbcode" jdbcType="VARCHAR" property="sbcode" />
+    <result column="sbtype" jdbcType="VARCHAR" property="sbtype" />
+    <result column="allergy" jdbcType="VARCHAR" property="allergy" />
+    <result column="married" jdbcType="INTEGER" property="married" />
+    <result column="income" jdbcType="VARCHAR" property="income" />
+    <result column="eid" jdbcType="INTEGER" property="eid" />
+    <result column="parent_vipid" jdbcType="INTEGER" property="parentVipid" />
+    <result column="xcxopenid" jdbcType="VARCHAR" property="xcxopenid" />
+    <result column="iscredit" jdbcType="INTEGER" property="iscredit" />
+    <result column="ctname" jdbcType="VARCHAR" property="ctname" />
+    <result column="yname" jdbcType="VARCHAR" property="yname" />
+    <result column="group_name" jdbcType="VARCHAR" property="groupName" />
+    <result column="inputmanname" jdbcType="VARCHAR" property="inputmanname" />
+    <result column="ename" jdbcType="VARCHAR" property="ename" />
+    <result column="paperpypename" jdbcType="VARCHAR" property="paperpypename" />
+    <result column="marriedname" jdbcType="VARCHAR" property="marriedname" />
+    <result column="discount" jdbcType="INTEGER" property="discount" />
+    <result column="isbank" jdbcType="INTEGER" property="isbank" />
+    <result column="isvipprice" jdbcType="INTEGER" property="isvipprice" />
+    <result column="isdiscount" jdbcType="INTEGER" property="isdiscount" />
+    <result column="isintegral" jdbcType="INTEGER" property="isintegral" />
+    <result column="vippricetype" jdbcType="INTEGER" property="vippricetype" />
+    <result column="iscount" jdbcType="INTEGER" property="iscount" />
+    <result column="ismonth" jdbcType="INTEGER" property="ismonth" />
+    <result column="integraltodikou" jdbcType="INTEGER" property="integraltodikou" />
+    <result column="integraltochuzhi" jdbcType="INTEGER" property="integraltochuzhi" />
+    <result column="isdikouintegral" jdbcType="INTEGER" property="isdikouintegral" />
+    <result column="issvip" jdbcType="INTEGER" property="issvip" />
+    <result column="svip_month_money" jdbcType="INTEGER" property="svipMonthMoney" />
+    <result column="svip_year_money" jdbcType="INTEGER" property="svipYearMoney" />
+    <result column="ptjfen" jdbcType="INTEGER" property="ptjfen" />
+    <result column="jf" jdbcType="INTEGER" property="jf" />
+    <result column="ptuserid" jdbcType="INTEGER" property="ptUserId" />
+    
+  </resultMap>
+  <sql id="Base_Column_List">
+    UUID,companyId,vipid, deleted, state, code, name, pinyin, sex, tel, birthday, address, comment, 
+    paperpype, idcard, ctid, inputdate, inputman, validdate, yid, inimoney, totalbuymoney, 
+    savemoney, intergralye, iniintergral, intergral, buycount, loginpass, remaindermoney, 
+    ticketmoney, modifydate, countbegin, countend, countcount, other1, other2, other3, 
+    other4, other5, other6, other7, other8, other9, other10, openid, age, industry, post, 
+    elder, company, sbcode, sbtype, allergy, married, income, eid, parent_vipid, xcxopenid, 
+    iscredit, ctname, yname, group_name, inputmanname, ename, paperpypename, marriedname, 
+    discount, isbank, isvipprice, isdiscount, isintegral, vippricetype, iscount, ismonth, 
+    integraltodikou, integraltochuzhi, isdikouintegral, issvip, svip_month_money, svip_year_money
+  </sql>
+  
+  
+    <insert id="insertVipCards"  parameterType="java.util.List" useGeneratedKeys="false">
+  insert into HX_vipcards (
+  <include refid="Base_Column_List" />
+  ) values 
+  <foreach collection="lists" item="it"  separator=",">
+  (
+  #{it.UUID,jdbcType=VARCHAR},
+  #{it.companyId,jdbcType=INTEGER},
+ #{it.vipid,jdbcType=INTEGER},
+#{it.deleted,jdbcType=INTEGER},
+#{it.state,jdbcType=INTEGER},
+#{it.code,jdbcType=VARCHAR},
+#{it.name,jdbcType=VARCHAR},
+#{it.pinyin,jdbcType=VARCHAR},
+#{it.sex,jdbcType=VARCHAR},
+#{it.tel,jdbcType=VARCHAR},
+#{it.birthday,jdbcType=VARCHAR},
+#{it.address,jdbcType=VARCHAR},
+#{it.comment,jdbcType=VARCHAR},
+#{it.paperpype,jdbcType=VARCHAR},
+#{it.idcard,jdbcType=VARCHAR},
+#{it.ctid,jdbcType=INTEGER},
+#{it.inputdate,jdbcType=VARCHAR},
+#{it.inputman,jdbcType=INTEGER},
+#{it.validdate,jdbcType=VARCHAR},
+#{it.yid,jdbcType=INTEGER},
+#{it.inimoney,jdbcType=INTEGER},
+#{it.totalbuymoney,jdbcType=REAL},
+#{it.savemoney,jdbcType=INTEGER},
+#{it.intergralye,jdbcType=INTEGER},
+#{it.iniintergral,jdbcType=REAL},
+#{it.intergral,jdbcType=REAL},
+#{it.buycount,jdbcType=INTEGER},
+#{it.loginpass,jdbcType=VARCHAR},
+#{it.remaindermoney,jdbcType=INTEGER},
+#{it.ticketmoney,jdbcType=INTEGER},
+#{it.modifydate,jdbcType=VARCHAR},
+#{it.countbegin,jdbcType=VARCHAR},
+#{it.countend,jdbcType=VARCHAR},
+#{it.countcount,jdbcType=INTEGER},
+#{it.other1,jdbcType=VARCHAR},
+#{it.other2,jdbcType=VARCHAR},
+#{it.other3,jdbcType=VARCHAR},
+#{it.other4,jdbcType=VARCHAR},
+#{it.other5,jdbcType=VARCHAR},
+#{it.other6,jdbcType=VARCHAR},
+#{it.other7,jdbcType=VARCHAR},
+#{it.other8,jdbcType=VARCHAR},
+#{it.other9,jdbcType=VARCHAR},
+#{it.other10,jdbcType=VARCHAR},
+#{it.openid,jdbcType=VARCHAR},
+#{it.age,jdbcType=VARCHAR},
+#{it.industry,jdbcType=VARCHAR},
+#{it.post,jdbcType=VARCHAR},
+#{it.elder,jdbcType=VARCHAR},
+#{it.company,jdbcType=VARCHAR},
+#{it.sbcode,jdbcType=VARCHAR},
+#{it.sbtype,jdbcType=VARCHAR},
+#{it.allergy,jdbcType=VARCHAR},
+#{it.married,jdbcType=INTEGER},
+#{it.income,jdbcType=VARCHAR},
+#{it.eid,jdbcType=INTEGER},
+#{it.parentVipid,jdbcType=INTEGER},
+#{it.xcxopenid,jdbcType=VARCHAR},
+#{it.iscredit,jdbcType=INTEGER},
+#{it.ctname,jdbcType=VARCHAR},
+#{it.yname,jdbcType=VARCHAR},
+#{it.groupName,jdbcType=VARCHAR},
+#{it.inputmanname,jdbcType=VARCHAR},
+#{it.ename,jdbcType=VARCHAR},
+#{it.paperpypename,jdbcType=VARCHAR},
+#{it.marriedname,jdbcType=VARCHAR},
+#{it.discount,jdbcType=INTEGER},
+#{it.isbank,jdbcType=INTEGER},
+#{it.isvipprice,jdbcType=INTEGER},
+#{it.isdiscount,jdbcType=INTEGER},
+#{it.isintegral,jdbcType=INTEGER},
+#{it.vippricetype,jdbcType=INTEGER},
+#{it.iscount,jdbcType=INTEGER},
+#{it.ismonth,jdbcType=INTEGER},
+#{it.integraltodikou,jdbcType=INTEGER},
+#{it.integraltochuzhi,jdbcType=INTEGER},
+#{it.isdikouintegral,jdbcType=INTEGER},
+#{it.issvip,jdbcType=INTEGER},
+#{it.svipMonthMoney,jdbcType=INTEGER},
+#{it.svipYearMoney,jdbcType=INTEGER}
+  )
+  </foreach>
+  on DUPLICATE key update
+  tel=VALUES(tel),intergral=VALUES(intergral),code=values(code),name=values(name)
+ </insert>
+  
+  
+  <select id="selectCount" resultType="java.lang.Integer">
+    select 
+   	count(vipid) as count
+    from HX_vipcards
+    where 
+ <![CDATA[tel <> '' and intergral>=0 ]]>
+ and  companyId= #{company,jdbcType=INTEGER} 
+  </select>
+  
+  
+    <select id="selectAll" parameterType="java.lang.Integer"  resultMap="BaseResultMap">
+    select 
+   <include refid="Base_Column_List" />
+    from HX_vipcards
+   where 
+ <![CDATA[tel <> '' and intergral>=0]]>
+ and  companyId= #{company,jdbcType=INTEGER} 
+    limit #{start,jdbcType=INTEGER} , #{end,jdbcType=INTEGER}
+  </select>
+  
+  
+  <select  id="selectJfCount" resultType="java.lang.Integer">
+    SELECT count(vipid) as count from HX_vipcards
+	where
+ <![CDATA[ intergral >=0  and tel <>''  and  (intergral-ptjfen) >=0]]>
+  and  companyId= #{company,jdbcType=INTEGER} 
+  </select>
+
+   <select  id="selectJf" parameterType="java.lang.Integer"  resultType="cn.lastwhisper.modular.pojo.HxVipCards">
+    SELECT vipid, tel ,intergral,ptjfen, (intergral-ptjfen) as jf from HX_vipcards
+	where
+ <![CDATA[ intergral >=0  and tel <>''  and  (intergral-ptjfen) >=0]]>
+  and  companyId= #{company,jdbcType=INTEGER} 
+  limit #{start,jdbcType=INTEGER} , #{end,jdbcType=INTEGER}
+  </select>
+  
+  
+  <!-- parameterType="java.lang.Integer" -->
+  <select id="selectVipid"  resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HX_vipcards
+    where ptuserid = #{ptuserid,jdbcType=VARCHAR} and companyId = #{companyId} 
+  </select>
+  
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from HX_vipcards
+    where vipid = #{vipid,jdbcType=INTEGER}
+  </select>
+  
+ 
+  <select id="selectByCompanyId" parameterType="java.lang.Integer" resultType="HxVipCards">
+   SELECT vipid, name, tel ,intergral,ptjfen, (intergral-ptjfen) as jf from HX_vipcards
+	where  
+	<![CDATA[ intergral >=0 and tel <>''  and  (intergral-ptjfen) <=0 ]]>
+	and companyid =#{companyId}
+	ORDER BY tel
+  </select>
+  
+  
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from HX_vipcards
+    where vipid = #{vipid,jdbcType=INTEGER}
+  </delete>
+  
+  
+   <update id="updateByVipId" parameterType="java.lang.Integer">
+    update HX_vipcards
+    <set>
+      <if test="ptjfen != null">
+        ptjfen = #{ptjfen,jdbcType=INTEGER},
+      </if>
+      <if test="userid != null">
+        ptuserid = #{userid,jdbcType=INTEGER}
+      </if>
+    </set>
+    where vipid = #{vipid,jdbcType=INTEGER}
+  </update>
+  
+  
+  
+  
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.HxVipCards">
+    update HX_vipcards
+    <set>
+      <if test="deleted != null">
+        deleted = #{deleted,jdbcType=INTEGER},
+      </if>
+      <if test="state != null">
+        state = #{state,jdbcType=INTEGER},
+      </if>
+      <if test="code != null">
+        code = #{code,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="pinyin != null">
+        pinyin = #{pinyin,jdbcType=VARCHAR},
+      </if>
+      <if test="sex != null">
+        sex = #{sex,jdbcType=VARCHAR},
+      </if>
+      <if test="tel != null">
+        tel = #{tel,jdbcType=VARCHAR},
+      </if>
+      <if test="birthday != null">
+        birthday = #{birthday,jdbcType=VARCHAR},
+      </if>
+      <if test="address != null">
+        address = #{address,jdbcType=VARCHAR},
+      </if>
+      <if test="comment != null">
+        comment = #{comment,jdbcType=VARCHAR},
+      </if>
+      <if test="paperpype != null">
+        paperpype = #{paperpype,jdbcType=VARCHAR},
+      </if>
+      <if test="idcard != null">
+        idcard = #{idcard,jdbcType=VARCHAR},
+      </if>
+      <if test="ctid != null">
+        ctid = #{ctid,jdbcType=INTEGER},
+      </if>
+      <if test="inputdate != null">
+        inputdate = #{inputdate,jdbcType=VARCHAR},
+      </if>
+      <if test="inputman != null">
+        inputman = #{inputman,jdbcType=INTEGER},
+      </if>
+      <if test="validdate != null">
+        validdate = #{validdate,jdbcType=VARCHAR},
+      </if>
+      <if test="yid != null">
+        yid = #{yid,jdbcType=INTEGER},
+      </if>
+      <if test="inimoney != null">
+        inimoney = #{inimoney,jdbcType=INTEGER},
+      </if>
+      <if test="totalbuymoney != null">
+        totalbuymoney = #{totalbuymoney,jdbcType=REAL},
+      </if>
+      <if test="savemoney != null">
+        savemoney = #{savemoney,jdbcType=INTEGER},
+      </if>
+      <if test="intergralye != null">
+        intergralye = #{intergralye,jdbcType=INTEGER},
+      </if>
+      <if test="iniintergral != null">
+        iniintergral = #{iniintergral,jdbcType=REAL},
+      </if>
+      <if test="intergral != null">
+        intergral = #{intergral,jdbcType=REAL},
+      </if>
+      <if test="buycount != null">
+        buycount = #{buycount,jdbcType=INTEGER},
+      </if>
+      <if test="loginpass != null">
+        loginpass = #{loginpass,jdbcType=VARCHAR},
+      </if>
+      <if test="remaindermoney != null">
+        remaindermoney = #{remaindermoney,jdbcType=INTEGER},
+      </if>
+      <if test="ticketmoney != null">
+        ticketmoney = #{ticketmoney,jdbcType=INTEGER},
+      </if>
+      <if test="modifydate != null">
+        modifydate = #{modifydate,jdbcType=VARCHAR},
+      </if>
+      <if test="countbegin != null">
+        countbegin = #{countbegin,jdbcType=VARCHAR},
+      </if>
+      <if test="countend != null">
+        countend = #{countend,jdbcType=VARCHAR},
+      </if>
+      <if test="countcount != null">
+        countcount = #{countcount,jdbcType=INTEGER},
+      </if>
+      <if test="other1 != null">
+        other1 = #{other1,jdbcType=VARCHAR},
+      </if>
+      <if test="other2 != null">
+        other2 = #{other2,jdbcType=VARCHAR},
+      </if>
+      <if test="other3 != null">
+        other3 = #{other3,jdbcType=VARCHAR},
+      </if>
+      <if test="other4 != null">
+        other4 = #{other4,jdbcType=VARCHAR},
+      </if>
+      <if test="other5 != null">
+        other5 = #{other5,jdbcType=VARCHAR},
+      </if>
+      <if test="other6 != null">
+        other6 = #{other6,jdbcType=VARCHAR},
+      </if>
+      <if test="other7 != null">
+        other7 = #{other7,jdbcType=VARCHAR},
+      </if>
+      <if test="other8 != null">
+        other8 = #{other8,jdbcType=VARCHAR},
+      </if>
+      <if test="other9 != null">
+        other9 = #{other9,jdbcType=VARCHAR},
+      </if>
+      <if test="other10 != null">
+        other10 = #{other10,jdbcType=VARCHAR},
+      </if>
+      <if test="openid != null">
+        openid = #{openid,jdbcType=VARCHAR},
+      </if>
+      <if test="age != null">
+        age = #{age,jdbcType=VARCHAR},
+      </if>
+      <if test="industry != null">
+        industry = #{industry,jdbcType=VARCHAR},
+      </if>
+      <if test="post != null">
+        post = #{post,jdbcType=VARCHAR},
+      </if>
+      <if test="elder != null">
+        elder = #{elder,jdbcType=VARCHAR},
+      </if>
+      <if test="company != null">
+        company = #{company,jdbcType=VARCHAR},
+      </if>
+      <if test="sbcode != null">
+        sbcode = #{sbcode,jdbcType=VARCHAR},
+      </if>
+      <if test="sbtype != null">
+        sbtype = #{sbtype,jdbcType=VARCHAR},
+      </if>
+      <if test="allergy != null">
+        allergy = #{allergy,jdbcType=VARCHAR},
+      </if>
+      <if test="married != null">
+        married = #{married,jdbcType=INTEGER},
+      </if>
+      <if test="income != null">
+        income = #{income,jdbcType=VARCHAR},
+      </if>
+      <if test="eid != null">
+        eid = #{eid,jdbcType=INTEGER},
+      </if>
+      <if test="parentVipid != null">
+        parent_vipid = #{parentVipid,jdbcType=INTEGER},
+      </if>
+      <if test="xcxopenid != null">
+        xcxopenid = #{xcxopenid,jdbcType=VARCHAR},
+      </if>
+      <if test="iscredit != null">
+        iscredit = #{iscredit,jdbcType=INTEGER},
+      </if>
+      <if test="ctname != null">
+        ctname = #{ctname,jdbcType=VARCHAR},
+      </if>
+      <if test="yname != null">
+        yname = #{yname,jdbcType=VARCHAR},
+      </if>
+      <if test="groupName != null">
+        group_name = #{groupName,jdbcType=VARCHAR},
+      </if>
+      <if test="inputmanname != null">
+        inputmanname = #{inputmanname,jdbcType=VARCHAR},
+      </if>
+      <if test="ename != null">
+        ename = #{ename,jdbcType=VARCHAR},
+      </if>
+      <if test="paperpypename != null">
+        paperpypename = #{paperpypename,jdbcType=VARCHAR},
+      </if>
+      <if test="marriedname != null">
+        marriedname = #{marriedname,jdbcType=VARCHAR},
+      </if>
+      <if test="discount != null">
+        discount = #{discount,jdbcType=INTEGER},
+      </if>
+      <if test="isbank != null">
+        isbank = #{isbank,jdbcType=INTEGER},
+      </if>
+      <if test="isvipprice != null">
+        isvipprice = #{isvipprice,jdbcType=INTEGER},
+      </if>
+      <if test="isdiscount != null">
+        isdiscount = #{isdiscount,jdbcType=INTEGER},
+      </if>
+      <if test="isintegral != null">
+        isintegral = #{isintegral,jdbcType=INTEGER},
+      </if>
+      <if test="vippricetype != null">
+        vippricetype = #{vippricetype,jdbcType=INTEGER},
+      </if>
+      <if test="iscount != null">
+        iscount = #{iscount,jdbcType=INTEGER},
+      </if>
+      <if test="ismonth != null">
+        ismonth = #{ismonth,jdbcType=INTEGER},
+      </if>
+      <if test="integraltodikou != null">
+        integraltodikou = #{integraltodikou,jdbcType=INTEGER},
+      </if>
+      <if test="integraltochuzhi != null">
+        integraltochuzhi = #{integraltochuzhi,jdbcType=INTEGER},
+      </if>
+      <if test="isdikouintegral != null">
+        isdikouintegral = #{isdikouintegral,jdbcType=INTEGER},
+      </if>
+      <if test="issvip != null">
+        issvip = #{issvip,jdbcType=INTEGER},
+      </if>
+      <if test="svipMonthMoney != null">
+        svip_month_money = #{svipMonthMoney,jdbcType=INTEGER},
+      </if>
+      <if test="svipYearMoney != null">
+        svip_year_money = #{svipYearMoney,jdbcType=INTEGER},
+      </if>
+    </set>
+    where vipid = #{vipid,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.HxVipCards">
+    update HX_vipcards
+    set deleted = #{deleted,jdbcType=INTEGER},
+      state = #{state,jdbcType=INTEGER},
+      code = #{code,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      pinyin = #{pinyin,jdbcType=VARCHAR},
+      sex = #{sex,jdbcType=VARCHAR},
+      tel = #{tel,jdbcType=VARCHAR},
+      birthday = #{birthday,jdbcType=VARCHAR},
+      address = #{address,jdbcType=VARCHAR},
+      comment = #{comment,jdbcType=VARCHAR},
+      paperpype = #{paperpype,jdbcType=VARCHAR},
+      idcard = #{idcard,jdbcType=VARCHAR},
+      ctid = #{ctid,jdbcType=INTEGER},
+      inputdate = #{inputdate,jdbcType=VARCHAR},
+      inputman = #{inputman,jdbcType=INTEGER},
+      validdate = #{validdate,jdbcType=VARCHAR},
+      yid = #{yid,jdbcType=INTEGER},
+      inimoney = #{inimoney,jdbcType=INTEGER},
+      totalbuymoney = #{totalbuymoney,jdbcType=REAL},
+      savemoney = #{savemoney,jdbcType=INTEGER},
+      intergralye = #{intergralye,jdbcType=INTEGER},
+      iniintergral = #{iniintergral,jdbcType=REAL},
+      intergral = #{intergral,jdbcType=REAL},
+      buycount = #{buycount,jdbcType=INTEGER},
+      loginpass = #{loginpass,jdbcType=VARCHAR},
+      remaindermoney = #{remaindermoney,jdbcType=INTEGER},
+      ticketmoney = #{ticketmoney,jdbcType=INTEGER},
+      modifydate = #{modifydate,jdbcType=VARCHAR},
+      countbegin = #{countbegin,jdbcType=VARCHAR},
+      countend = #{countend,jdbcType=VARCHAR},
+      countcount = #{countcount,jdbcType=INTEGER},
+      other1 = #{other1,jdbcType=VARCHAR},
+      other2 = #{other2,jdbcType=VARCHAR},
+      other3 = #{other3,jdbcType=VARCHAR},
+      other4 = #{other4,jdbcType=VARCHAR},
+      other5 = #{other5,jdbcType=VARCHAR},
+      other6 = #{other6,jdbcType=VARCHAR},
+      other7 = #{other7,jdbcType=VARCHAR},
+      other8 = #{other8,jdbcType=VARCHAR},
+      other9 = #{other9,jdbcType=VARCHAR},
+      other10 = #{other10,jdbcType=VARCHAR},
+      openid = #{openid,jdbcType=VARCHAR},
+      age = #{age,jdbcType=VARCHAR},
+      industry = #{industry,jdbcType=VARCHAR},
+      post = #{post,jdbcType=VARCHAR},
+      elder = #{elder,jdbcType=VARCHAR},
+      company = #{company,jdbcType=VARCHAR},
+      sbcode = #{sbcode,jdbcType=VARCHAR},
+      sbtype = #{sbtype,jdbcType=VARCHAR},
+      allergy = #{allergy,jdbcType=VARCHAR},
+      married = #{married,jdbcType=INTEGER},
+      income = #{income,jdbcType=VARCHAR},
+      eid = #{eid,jdbcType=INTEGER},
+      parent_vipid = #{parentVipid,jdbcType=INTEGER},
+      xcxopenid = #{xcxopenid,jdbcType=VARCHAR},
+      iscredit = #{iscredit,jdbcType=INTEGER},
+      ctname = #{ctname,jdbcType=VARCHAR},
+      yname = #{yname,jdbcType=VARCHAR},
+      group_name = #{groupName,jdbcType=VARCHAR},
+      inputmanname = #{inputmanname,jdbcType=VARCHAR},
+      ename = #{ename,jdbcType=VARCHAR},
+      paperpypename = #{paperpypename,jdbcType=VARCHAR},
+      marriedname = #{marriedname,jdbcType=VARCHAR},
+      discount = #{discount,jdbcType=INTEGER},
+      isbank = #{isbank,jdbcType=INTEGER},
+      isvipprice = #{isvipprice,jdbcType=INTEGER},
+      isdiscount = #{isdiscount,jdbcType=INTEGER},
+      isintegral = #{isintegral,jdbcType=INTEGER},
+      vippricetype = #{vippricetype,jdbcType=INTEGER},
+      iscount = #{iscount,jdbcType=INTEGER},
+      ismonth = #{ismonth,jdbcType=INTEGER},
+      integraltodikou = #{integraltodikou,jdbcType=INTEGER},
+      integraltochuzhi = #{integraltochuzhi,jdbcType=INTEGER},
+      isdikouintegral = #{isdikouintegral,jdbcType=INTEGER},
+      issvip = #{issvip,jdbcType=INTEGER},
+      svip_month_money = #{svipMonthMoney,jdbcType=INTEGER},
+      svip_year_money = #{svipYearMoney,jdbcType=INTEGER}
+    where vipid = #{vipid,jdbcType=INTEGER}
+  </update>
+</mapper>

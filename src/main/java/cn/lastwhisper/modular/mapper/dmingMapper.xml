@@ -1,0 +1,152 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.lastwhisper.modular.mapper.dmingMapper" >
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.dming" >
+    <id column="id" property="id" jdbcType="INTEGER" />
+    <result column="weizhi" property="weizhi" jdbcType="VARCHAR" />
+    <result column="leixing" property="leixing" jdbcType="VARCHAR" />
+    <result column="sousuo" property="sousuo" jdbcType="VARCHAR" />
+    <result column="dizhi" property="dizhi" jdbcType="VARCHAR" />
+    <result column="dm" property="dm" jdbcType="VARCHAR" />
+    <result column="bzhu" property="bzhu" jdbcType="VARCHAR" />
+    <result column="zhuangTai" property="zhuangtai" jdbcType="INTEGER" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    id,leixing, weizhi, sousuo, dizhi, dm, zhuangTai,bzhu
+  </sql>
+  
+    <insert  id="insertdm"  parameterType="cn.lastwhisper.modular.pojo.dming" >
+  insert o2o_location_storelist ( 
+leixing,weizhi, sousuo, dizhi, dm,bzhu
+) values (
+<if test="leixing != null" >
+         #{leixing,jdbcType=VARCHAR},
+      </if>
+  <if test="weizhi != null" >
+         #{weizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="sousuo != null" >
+       #{sousuo,jdbcType=VARCHAR},
+      </if>
+      <if test="dizhi != null" >
+        #{dizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="dm != null" >
+        #{dm,jdbcType=VARCHAR},
+      </if>
+      <if test="bzhu != null" >
+         #{bzhu,jdbcType=VARCHAR}
+      </if>
+      );
+  </insert>
+  
+  
+  
+  
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Integer" >
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_location_storelist
+    where id = #{id,jdbcType=INTEGER}
+  </select>
+  
+  <select id="selectdming" resultMap="BaseResultMap" parameterType="cn.lastwhisper.modular.pojo.dming">
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_location_storelist 
+    <where>
+ <if test="dm != null and dm !=''" >
+       and  dm like concat('%',#{dm,jdbcType=VARCHAR},'%')
+      </if>
+      </where>
+  </select>
+  
+  
+  <select id="selectByPrimaryDm" resultMap="BaseResultMap" parameterType="cn.lastwhisper.modular.pojo.dming" >
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_location_storelist where zhuangTai = #{zhuangtai,jdbcType=INTEGER} limit 0,1;
+  </select>
+  
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer" >
+    delete from o2o_location_storelist
+    where id = #{id,jdbcType=INTEGER}
+  </delete>
+  <update id="findupdate" parameterType="cn.lastwhisper.modular.pojo.dming" >
+    update o2o_location_storelist
+    <set >
+     <if test="leixing != null" >
+        leixing = #{leixing,jdbcType=VARCHAR},
+      </if>
+      <if test="weizhi != null" >
+        weizhi = #{weizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="sousuo != null" >
+        sousuo = #{sousuo,jdbcType=VARCHAR},
+      </if>
+      <if test="dizhi != null" >
+        dizhi = #{dizhi,jdbcType=VARCHAR},
+      </if>
+      <if test="dm != null" >
+        dm = #{dm,jdbcType=VARCHAR},
+      </if>
+      <if test="zhuangtai != null" >
+        zhuangTai = #{zhuangtai,jdbcType=INTEGER},
+      </if>
+      <if test="bzhu != null" >
+        bzhu = #{bzhu,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  <insert  id="insertShangPings"  parameterType="java.util.Map">
+  insert down_store_goods_monitor ( shop_id,md,jli,names,xliang,zkou,xjia,yjia,dsjia,task_id) values
+  <foreach collection="lists" item="it"  separator=",">
+  (
+  #{it.shopid},
+ #{it.md},
+ #{it.jli},
+  #{it.names},
+  #{it.xliang},
+  #{it.zkou},
+  #{it.xjia},
+ #{it.yjia},
+  #{it.dsjia},
+  #{it.sid}
+)
+</foreach>
+  </insert>
+  
+  <insert  id="insertShangPing"  parameterType="java.util.Map">
+  insert down_store_goods (task_id, md,names,xliang,zkou,xjia,yjia,dsjia) values
+  <foreach collection="lists" item="it"  separator=",">
+  (
+  #{it.mdid},
+ #{it.md},
+  #{it.names},
+  #{it.xliang},
+  #{it.zkou},
+  #{it.xjia},
+ #{it.yjia},
+  #{it.dsjia}
+)
+</foreach>
+  </insert>
+  
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.dming" >
+    update o2o_location_storelist
+    set weizhi = #{weizhi,jdbcType=VARCHAR},
+      sousuo = #{sousuo,jdbcType=VARCHAR},
+      dizhi = #{dizhi,jdbcType=VARCHAR},
+      dm = #{dm,jdbcType=VARCHAR},
+      zhuangTai = #{zhuangtai,jdbcType=INTEGER}
+    where id = #{id,jdbcType=INTEGER}
+  </update>
+  
+  <update id="updateDmZhuangtai" parameterType="cn.lastwhisper.modular.pojo.dming" >
+    update o2o_location_storelist
+    set zhuangTai = #{zhuangtai,jdbcType=INTEGER},
+    updatetime=now()
+    where dm = #{dm,jdbcType=VARCHAR}
+  </update>
+</mapper>

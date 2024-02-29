@@ -1,0 +1,205 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.o2o_shop_retailMapper">
+  <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.o2o_shop_retail">
+    <id column="item_id" jdbcType="BIGINT" property="itemId" />
+    <result column="act_type" jdbcType="INTEGER" property="actType" />
+    <result column="act_price" jdbcType="DECIMAL" property="actPrice" />
+    <result column="origin_price" jdbcType="DECIMAL" property="originPrice" />
+    <result column="app_food_code" jdbcType="VARCHAR" property="appFoodCode" />
+    <result column="day_limit" jdbcType="BIGINT" property="dayLimit" />
+    <result column="start_time" jdbcType="BIGINT" property="startTime" />
+    <result column="end_time" jdbcType="BIGINT" property="endTime" />
+    <result column="order_limit" jdbcType="BIGINT" property="orderLimit" />
+    <result column="poi_code" jdbcType="VARCHAR" property="poiCode" />
+    <result column="period" jdbcType="VARCHAR" property="period" />
+    <result column="user_type" jdbcType="BIGINT" property="userType" />
+    <result column="weeks_time" jdbcType="VARCHAR" property="weeksTime" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="stock" jdbcType="BIGINT" property="stock" />
+    <result column="status" jdbcType="BIGINT" property="status" />
+    <result column="setting_type" jdbcType="BIGINT" property="settingType" />
+    <result column="discount_coefficient" jdbcType="BIGINT" property="discountCoefficient" />
+    <result column="sequence" jdbcType="BIGINT" property="sequence" />
+    <result column="modifydate" jdbcType="TIMESTAMP" property="modifydate" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    item_id, act_type, act_price, origin_price, app_food_code, day_limit, start_time, 
+    end_time, order_limit, poi_code, period, user_type, weeks_time, name, stock, status, 
+    setting_type, discount_coefficient, sequence
+  </sql>
+  
+  
+  <insert id="InsertShopRetail" parameterType="cn.lastwhisper.modular.pojo.o2o_shop_retail">
+
+		insert into o2o_shop_retail (
+		<include refid="Base_Column_List" />
+		) values
+		<foreach collection="lists" item="it" separator=",">
+			(
+			#{it.itemId,jdbcType=BIGINT},
+			#{it.actType,jdbcType=INTEGER},
+			#{it.actPrice,jdbcType=DECIMAL},
+			#{it.originPrice,jdbcType=DECIMAL},
+			#{it.appFoodCode,jdbcType=VARCHAR},
+			#{it.dayLimit,jdbcType=BIGINT},
+			#{it.startTime,jdbcType=BIGINT},
+			#{it.endTime,jdbcType=BIGINT},
+			#{it.orderLimit,jdbcType=BIGINT},
+			#{it.poiCode,jdbcType=VARCHAR},
+			#{it.period,jdbcType=VARCHAR},
+			#{it.userType,jdbcType=BIGINT},
+			#{it.weeksTime,jdbcType=VARCHAR},
+			#{it.name,jdbcType=VARCHAR},
+			#{it.stock,jdbcType=BIGINT},
+			#{it.status,jdbcType=BIGINT},
+			#{it.settingType,jdbcType=BIGINT},
+			#{it.discountCoefficient,jdbcType=BIGINT},
+			#{it.sequence,jdbcType=BIGINT}
+			)
+		</foreach>
+		ON DUPLICATE KEY UPDATE
+		item_id=VALUES(item_id);
+	</insert>
+  
+  
+  <select id="findZheKouRetailAllcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select  count(item_id)
+		from o2o_shop_retail 
+		where 
+		poi_code = #{poiCode,jdbcType=VARCHAR} and act_type=1001
+	</select>
+  
+  <select id="findZheKouRetailAll" parameterType="Map" resultMap="BaseResultMap">
+    select item_id
+    from o2o_shop_retail where  poi_code = #{poiCode,jdbcType=VARCHAR} and act_type=1001
+   <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+  </select>
+  
+  
+   
+  
+  <select id="findBaoPinRetailAllcount" parameterType="java.lang.String" resultType="java.lang.Integer">
+		select  count(*)
+		from o2o_shop_retail 
+		where 
+		poi_code = #{poiCode,jdbcType=VARCHAR} and act_type=56
+	</select>
+  
+  <select id="findBaoPinRetailAll" parameterType="Map" resultMap="BaseResultMap">
+    select item_id
+    from o2o_shop_retail where  poi_code = #{poiCode,jdbcType=VARCHAR}  and act_type=56
+   <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+  </select>
+  
+  <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from o2o_shop_retail
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </select>
+  
+  
+   <delete id="deleteZheKouByPrimaryPoiCode" parameterType="java.lang.String" >
+    delete from o2o_shop_retail
+    where poi_code = #{poiCode,jdbcType=VARCHAR}  and act_type=1001
+  </delete>
+   <delete id="deleteBaoPinByPrimaryPoiCode" parameterType="java.lang.String" >
+    delete from o2o_shop_retail
+    where poi_code = #{poiCode,jdbcType=VARCHAR}  and act_type=56
+  </delete>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
+    delete from o2o_shop_retail
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </delete>
+  <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.o2o_shop_retail">
+    update o2o_shop_retail
+    <set>
+      <if test="actType != null">
+        act_type = #{actType,jdbcType=INTEGER},
+      </if>
+      <if test="actPrice != null">
+        act_price = #{actPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="originPrice != null">
+        origin_price = #{originPrice,jdbcType=DECIMAL},
+      </if>
+      <if test="appFoodCode != null">
+        app_food_code = #{appFoodCode,jdbcType=VARCHAR},
+      </if>
+      <if test="dayLimit != null">
+        day_limit = #{dayLimit,jdbcType=BIGINT},
+      </if>
+      <if test="startTime != null">
+        start_time = #{startTime,jdbcType=BIGINT},
+      </if>
+      <if test="endTime != null">
+        end_time = #{endTime,jdbcType=BIGINT},
+      </if>
+      <if test="orderLimit != null">
+        order_limit = #{orderLimit,jdbcType=BIGINT},
+      </if>
+      <if test="poiCode != null">
+        poi_code = #{poiCode,jdbcType=VARCHAR},
+      </if>
+      <if test="period != null">
+        period = #{period,jdbcType=VARCHAR},
+      </if>
+      <if test="userType != null">
+        user_type = #{userType,jdbcType=BIGINT},
+      </if>
+      <if test="weeksTime != null">
+        weeks_time = #{weeksTime,jdbcType=VARCHAR},
+      </if>
+      <if test="name != null">
+        name = #{name,jdbcType=VARCHAR},
+      </if>
+      <if test="stock != null">
+        stock = #{stock,jdbcType=BIGINT},
+      </if>
+      <if test="status != null">
+        status = #{status,jdbcType=BIGINT},
+      </if>
+      <if test="settingType != null">
+        setting_type = #{settingType,jdbcType=BIGINT},
+      </if>
+      <if test="discountCoefficient != null">
+        discount_coefficient = #{discountCoefficient,jdbcType=BIGINT},
+      </if>
+      <if test="sequence != null">
+        sequence = #{sequence,jdbcType=BIGINT},
+      </if>
+      <if test="modifydate != null">
+        modifydate = #{modifydate,jdbcType=TIMESTAMP},
+      </if>
+    </set>
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.o2o_shop_retail">
+    update o2o_shop_retail
+    set act_type = #{actType,jdbcType=INTEGER},
+      act_price = #{actPrice,jdbcType=DECIMAL},
+      origin_price = #{originPrice,jdbcType=DECIMAL},
+      app_food_code = #{appFoodCode,jdbcType=VARCHAR},
+      day_limit = #{dayLimit,jdbcType=BIGINT},
+      start_time = #{startTime,jdbcType=BIGINT},
+      end_time = #{endTime,jdbcType=BIGINT},
+      order_limit = #{orderLimit,jdbcType=BIGINT},
+      poi_code = #{poiCode,jdbcType=VARCHAR},
+      period = #{period,jdbcType=VARCHAR},
+      user_type = #{userType,jdbcType=BIGINT},
+      weeks_time = #{weeksTime,jdbcType=VARCHAR},
+      name = #{name,jdbcType=VARCHAR},
+      stock = #{stock,jdbcType=BIGINT},
+      status = #{status,jdbcType=BIGINT},
+      setting_type = #{settingType,jdbcType=BIGINT},
+      discount_coefficient = #{discountCoefficient,jdbcType=BIGINT},
+      sequence = #{sequence,jdbcType=BIGINT},
+      modifydate = #{modifydate,jdbcType=TIMESTAMP}
+    where item_id = #{itemId,jdbcType=BIGINT}
+  </update>
+</mapper>

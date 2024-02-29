@@ -1,0 +1,442 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.lastwhisper.modular.mapper.o2o_operate_upload_priceMapper">
+    <resultMap id="BaseResultMap" type="cn.lastwhisper.modular.pojo.o2o_operate_upload_price">
+        <id column="id" jdbcType="INTEGER" property="id"/>
+        <result column="poi_code" jdbcType="VARCHAR" property="poiCode"/>
+        <result column="poi_name" jdbcType="VARCHAR" property="poiNmae"/>
+        <result column="item_ids" jdbcType="VARCHAR" property="item_ids"/>
+        <result column="act_type" jdbcType="INTEGER" property="actType"/>
+        <result column="upc" jdbcType="VARCHAR" property="upc"/>
+        <result column="goods_code" jdbcType="VARCHAR" property="goods_code"/>
+        <result column="app_medicine_code" jdbcType="VARCHAR" property="app_medicine_code"/>
+        <result column="app_food_code" jdbcType="VARCHAR" property="app_food_code"/>
+        <result column="goods_name" jdbcType="VARCHAR" property="goodsName"/>
+        <result column="discounted_price" jdbcType="DECIMAL" property="discountedPrice"></result>
+        <result column="act_price" jdbcType="DECIMAL" property="act_price"/>
+        <result column="price" jdbcType="DECIMAL" property="price"/>
+        <result column="price_old" jdbcType="DECIMAL" property="priceOld"/>
+        <result column="is_sold_out" jdbcType="INTEGER" property="isSoldOut"/>
+        <result column="bao_pin" jdbcType="INTEGER" property="baoPin"/>
+        <result column="lai_yuan" jdbcType="VARCHAR" property="laiYuan"/>
+        <result column="status" jdbcType="INTEGER" property="status"/>
+        <result column="update_result" jdbcType="VARCHAR" property="updateResult"/>
+        <result column="result" jdbcType="VARCHAR" property="result"/>
+        <result column="start_time" jdbcType="INTEGER" property="start_time"/>
+        <result column="end_time" jdbcType="INTEGER" property="end_time"/>
+        <result column="order_limit" jdbcType="INTEGER" property="order_limit"/>
+        <result column="setting_type" jdbcType="INTEGER" property="setting_type"/>
+        <result column="day_limit" jdbcType="INTEGER" property="day_limit"/>
+
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, poi_code, upc, goods_code, goods_name, discounted_price, price, price_old, is_sold_out,
+    bao_pin, lai_yuan, status, update_result, result
+    </sql>
+
+    <select id="selectUpdatePrice" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        goods_code as app_medicine_code,price from o2o_operate_upload_price
+        where
+        <![CDATA[ status=0   and  lai_yuan='批量']]>
+        <![CDATA[and price <>0 ]]>
+        and poi_code=#{poiCode,jdbcType=VARCHAR}
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <select id="UpdatePriceCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price
+        where
+ <![CDATA[ status = 0
+          and lai_yuan = '批量']]>
+  <![CDATA[and price <> 0 ]]>
+ and poi_code = #{poiCode,jdbcType=VARCHAR}
+    </select>
+
+    <select id="UpdateDiscountZheKouCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price
+        where poi_code = #{poiCode,jdbcType=VARCHAR}
+          and bao_pin = 0
+   <![CDATA[ and lai_yuan = '批量'
+          and status = 0
+          and goods_code <> '']]>
+   <![CDATA[and discounted_price <> price ]]>
+   <![CDATA[and discounted_price > 0
+        ]]>
+    </select>
+
+    <select id="selectUpdateZheKouDiscount" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        goods_code as app_food_code,
+        UNIX_TIMESTAMP(NOW()) as start_time,
+        UNIX_TIMESTAMP(NOW())+31449600 as end_time ,
+        1 as order_limit,
+        discounted_price as act_price,
+        -1 as day_limit ,
+        1 as setting_type
+        from o2o_operate_upload_price
+        where
+        poi_code=#{poiCode,jdbcType=VARCHAR}
+        and bao_pin=0
+        <![CDATA[ and  lai_yuan='批量' and status=0  and goods_code<>'']]>
+        <![CDATA[and discounted_price<>price ]]>
+        <![CDATA[and discounted_price>0 ]]>
+        <if test="start!=null and size!=null">
+            limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <!-- 单次任务获取  -->
+    <select id="danCiRenWuHuoQu" resultMap="BaseResultMap">
+        select o2o_operate_upload_price.poi_code, o2o_shop.mcheng as poi_name
+        from o2o_operate_upload_price
+                 left join o2o_shop on o2o_shop.bma = o2o_operate_upload_price.poi_code
+        where
+ <![CDATA[ status = 0
+          and lai_yuan in ('重点', '补品')
+          and o2o_shop.mcheng <> '']]>
+        group by shop_id, poi_code
+    </select>
+
+    <!-- 批量任务获取  -->
+    <select id="piLiangRenWuHuoQu" resultMap="BaseResultMap">
+        select o2o_operate_upload_price.poi_code, o2o_shop.mcheng as poi_name
+        from o2o_operate_upload_price
+                 left join o2o_shop on o2o_shop.bma = o2o_operate_upload_price.poi_code
+        where
+ <![CDATA[ status = 0
+          and lai_yuan in ('批量')
+          and o2o_shop.mcheng <> '']]>
+        group by shop_id, poi_code
+    </select>
+
+
+    <update id="UpdateZheKouDiscountzhuangtai" parameterType="java.lang.String">
+        update o2o_operate_upload_price
+        set status=1,
+            uploadtime=LOCALTIME()
+        where poi_code = #{poiCode,jdbcType=VARCHAR}
+          and bao_pin = 0
+   <![CDATA[ and lai_yuan = '批量'
+          and status = 0  ]]>
+   <![CDATA[and discounted_price <> price ]]>
+   <![CDATA[and discounted_price > 0
+        ]]>
+    </update>
+    <update id="piLiangUpdateDiscountzhuangtai" parameterType="java.lang.String">
+        update o2o_operate_upload_price
+        set status=#{status,jdbcType=INTEGER},
+        uploadtime=LOCALTIME()
+        where
+        poi_code=#{poiCode,jdbcType=VARCHAR}
+        and bao_pin=#{baoPin,jdbcType=INTEGER}
+        <![CDATA[ and  lai_yuan='批量' and status=#{tjStatus,jdbcType=INTEGER}  ]]>
+        <!--    <![CDATA[and discounted_price<>price ]]>
+           <![CDATA[and discounted_price>0 ]]> -->
+    </update>
+
+
+    <update id="danCiUpdateDiscountzhuangtai" parameterType="java.lang.String">
+        update o2o_operate_upload_price
+        set status=#{status,jdbcType=INTEGER},
+        uploadtime=LOCALTIME()
+        where
+        poi_code=#{poiCode,jdbcType=VARCHAR}
+        and bao_pin=#{baoPin,jdbcType=INTEGER}
+        <![CDATA[ and  lai_yuan in ('重点','补品') and status=#{tjStatus,jdbcType=INTEGER}  ]]>
+        <!--   <![CDATA[and discounted_price<>price ]]>
+          <![CDATA[and discounted_price>0 ]]> -->
+    </update>
+
+
+    <select id="selectUpdateBaoPinDiscount" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        goods_code as app_food_code,
+        UNIX_TIMESTAMP(NOW()) as start_time,
+        UNIX_TIMESTAMP(NOW())+31449600 as end_time ,
+        1 as order_limit,
+        discounted_price as act_price,
+        -1 as day_limit,
+        1 as setting_type
+        from o2o_operate_upload_price
+        where
+        poi_code=#{poiCode,jdbcType=VARCHAR}
+        and bao_pin=1
+        <![CDATA[ and  lai_yuan='批量' and status=0  ]]>
+        <![CDATA[and discounted_price<>price ]]>
+        <![CDATA[and discounted_price>0 ]]>
+        <if test="start!=null and size!=null">
+            limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <!-- 批量爆品活动计数 -->
+    <select id="piLiangUpdateDiscountBaoPinCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price
+        where poi_code = #{poiCode,jdbcType=VARCHAR}
+          and bao_pin = 1
+   <![CDATA[and lai_yuan in ('批量')
+          and status = 0 ]]>
+   <![CDATA[and discounted_price <> price ]]>
+   <![CDATA[and discounted_price > 0
+        ]]>
+    </select>
+
+    <!-- 单次爆品活动计数 -->
+    <select id="DanCiUpdateDiscountBaoPinCount" parameterType="Map" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price
+        where poi_code = #{poiCode,jdbcType=VARCHAR}
+          and bao_pin = 1
+   <![CDATA[and lai_yuan in ('重点', '补品')
+          and status = 0 ]]>
+   <![CDATA[and discounted_price <> price ]]>
+   <![CDATA[and discounted_price > 0
+        ]]>
+    </select>
+    <!-- 单次爆品活动创建 -->
+    <select id="DanCiUpdateBaoPinDiscount" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        goods_code as app_food_code,
+        UNIX_TIMESTAMP(NOW()) as start_time,
+        UNIX_TIMESTAMP(NOW())+31449600 as end_time ,
+        1 as order_limit,
+        discounted_price as act_price,
+        -1 as day_limit,
+        1 as setting_type
+        from o2o_operate_upload_price
+        where
+        poi_code=#{poiCode,jdbcType=VARCHAR}
+        and bao_pin=1
+        <![CDATA[and lai_yuan in ('重点','补品')  and status=0 ]]>
+        <![CDATA[and discounted_price<>price ]]>
+        <![CDATA[and discounted_price>0 ]]>
+        <if test="start!=null and size!=null">
+            limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+
+    <!-- 单次折扣活动计数 -->
+    <select id="DanCiUpdateDiscountZheKouCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price
+        where poi_code = #{poiCode,jdbcType=VARCHAR}
+          and bao_pin = 0
+   <![CDATA[and lai_yuan in ('重点', '补品')
+          and status = 0 ]]>
+   <![CDATA[and discounted_price <> price ]]>
+   <![CDATA[and discounted_price > 0
+        ]]>
+    </select>
+    <!-- 单次折扣活动创建 -->
+    <select id="DanCiUpdateZheKouDiscount" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select
+        goods_code as app_food_code,
+        UNIX_TIMESTAMP(NOW()) as start_time,
+        UNIX_TIMESTAMP(NOW())+31449600 as end_time ,
+        1 as order_limit,
+        discounted_price as act_price,
+        -1 as day_limit,
+        1 as setting_type
+        from o2o_operate_upload_price
+        where
+        poi_code=#{poiCode,jdbcType=VARCHAR}
+        and bao_pin=0
+        <![CDATA[and lai_yuan in ('重点','补品')  and status=0 ]]>
+        <![CDATA[and discounted_price<>price ]]>
+        <![CDATA[and discounted_price>0 ]]>
+        <if test="start!=null and size!=null">
+            limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+
+    <select id="UpdateDanCiDiscountBaoPinCount" parameterType="Map" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price g,
+             o2o_shop_retail r
+        where g.poi_code = r.poi_code
+          and g.goods_code = r.app_food_code
+          and g.poi_code = #{poiCode,jdbcType=VARCHAR}
+          and lai_yuan in ('重点', '补品')
+ <![CDATA[and g.status = 0  ]]>
+   and bao_pin = 1
+    </select>
+
+    <select id="selectDanCiUpdateBaoPinDiscount" parameterType="Map" resultMap="BaseResultMap">
+        select r.item_id as item_ids
+        from o2o_operate_upload_price g, o2o_shop_retail r
+        where
+        g.poi_code=r.poi_code
+        and g.goods_code=r.app_food_code
+        and g.poi_code=#{poiCode,jdbcType=VARCHAR}
+        and lai_yuan in ('重点','补品')
+        <![CDATA[and g.status=0  ]]>
+        and bao_pin=1
+        <if test="start!=null and size!=null">
+            limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+    <!-- 判断单次有没有需要更新的数据 -->
+    <select id="findDanCiIsUpdateCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price
+        where poi_code = #{poiCode,jdbcType=VARCHAR}
+<![CDATA[and lai_yuan in ('重点', '补品')
+          and status = 0
+          and discounted_price <> price
+          and price <> price_old
+        ]]>
+
+
+    </select>
+
+    <!-- 判断单次有没有需要更新的数据 -->
+    <select id="findDanCiPriceUpdate" parameterType="hashMap" resultMap="BaseResultMap">
+        select
+        goods_code as app_medicine_code,
+        price
+        from o2o_operate_upload_price
+        where
+        poi_code = #{poiCode,jdbcType=VARCHAR}
+        <![CDATA[and lai_yuan in ('重点','补品') and status=0  and discounted_price<>price  and price<>price_old]]>
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <select id="findDCZKIdCount" parameterType="java.lang.String" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price g,
+             o2o_shop_retail r
+        where g.poi_code = r.poi_code
+          and g.goods_code = r.app_food_code
+          and g.poi_code = #{poiCode,jdbcType=VARCHAR}  <![CDATA[and g.lai_yuan in ('重点', '补品')
+          and g.status = 0
+        ]]>
+    </select>
+    <select id="findDCZKId" parameterType="java.lang.String" resultMap="BaseResultMap">
+        select r.item_id as item_ids,case when bao_pin='1' then '56' else '1001' end as act_type
+        from o2o_operate_upload_price g, o2o_shop_retail r
+        where g.poi_code=r.poi_code and g.goods_code=r.app_food_code and
+        g.poi_code = #{poiCode,jdbcType=VARCHAR}  <![CDATA[and g.lai_yuan in ('重点','补品')  and g.status=0 ]]>
+        <if test="start!=null and size!=null">
+            limit #{start,jdbcType=INTEGER},#{size,jdbcType=INTEGER}
+        </if>
+    </select>
+
+
+    <select id="selectList" resultMap="BaseResultMap">
+        select poi_code, goods_code
+        from o2o_operate_upload_price
+
+    </select>
+
+    <select id="UpdateDanCiDiscountZheKouCount" parameterType="Map" resultType="java.lang.Integer">
+        select count(*)
+        from o2o_operate_upload_price g,
+             o2o_shop_retail r
+        where g.poi_code = r.poi_code
+          and g.goods_code = r.app_food_code
+          and g.poi_code = #{poiCode,jdbcType=VARCHAR}
+          and lai_yuan in ('重点', '补品')
+ <![CDATA[and g.status = 0  ]]>
+   and bao_pin = 0
+    </select>
+
+    <select id="selectDanCiUpdateZheKouDiscount" parameterType="Map" resultMap="BaseResultMap">
+        select r.item_id as item_ids
+        from o2o_operate_upload_price g, o2o_shop_retail r
+        where
+        g.poi_code=r.poi_code
+        and g.goods_code=r.app_food_code
+        and g.poi_code=#{poiCode,jdbcType=VARCHAR}
+        and lai_yuan in ('重点','补品')
+        <![CDATA[and g.status=0  ]]>
+        and bao_pin=0
+        <if test="start!=null and size!=null">
+            limit #{start},#{size}
+        </if>
+    </select>
+
+    <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+        select
+        <include refid="Base_Column_List"/>
+        from o2o_operate_upload_price
+        where id = #{id,jdbcType=INTEGER}
+    </select>
+    <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+        delete
+        from o2o_operate_upload_price
+        where id = #{id,jdbcType=INTEGER}
+    </delete>
+    <update id="updateByPrimaryKeySelective" parameterType="cn.lastwhisper.modular.pojo.o2o_operate_upload_price">
+        update o2o_operate_upload_price
+        <set>
+            <if test="poiCode != null">
+                poi_code = #{poiCode,jdbcType=VARCHAR},
+            </if>
+            <if test="upc != null">
+                upc = #{upc,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsCode != null">
+                goods_code = #{goodsCode,jdbcType=VARCHAR},
+            </if>
+            <if test="goodsName != null">
+                goods_name = #{goodsName,jdbcType=VARCHAR},
+            </if>
+            <if test="discountedPrice != null">
+                discounted_price = #{discountedPrice,jdbcType=DECIMAL},
+            </if>
+            <if test="price != null">
+                price = #{price,jdbcType=DECIMAL},
+            </if>
+            <if test="priceOld != null">
+                price_old = #{priceOld,jdbcType=DECIMAL},
+            </if>
+            <if test="isSoldOut != null">
+                is_sold_out = #{isSoldOut,jdbcType=INTEGER},
+            </if>
+            <if test="baoPin != null">
+                bao_pin = #{baoPin,jdbcType=INTEGER},
+            </if>
+            <if test="laiYuan != null">
+                lai_yuan = #{laiYuan,jdbcType=VARCHAR},
+            </if>
+            <if test="status != null">
+                status = #{status,jdbcType=INTEGER},
+            </if>
+            <if test="updateResult != null">
+                update_result = #{updateResult,jdbcType=VARCHAR},
+            </if>
+            <if test="result != null">
+                result = #{result,jdbcType=VARCHAR},
+            </if>
+        </set>
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+    <update id="updateByPrimaryKey" parameterType="cn.lastwhisper.modular.pojo.o2o_operate_upload_price">
+        update o2o_operate_upload_price
+        set poi_code         = #{poiCode,jdbcType=VARCHAR},
+            upc              = #{upc,jdbcType=VARCHAR},
+            goods_code       = #{goodsCode,jdbcType=VARCHAR},
+            goods_name       = #{goodsName,jdbcType=VARCHAR},
+            discounted_price = #{discountedPrice,jdbcType=DECIMAL},
+            price            = #{price,jdbcType=DECIMAL},
+            price_old        = #{priceOld,jdbcType=DECIMAL},
+            is_sold_out      = #{isSoldOut,jdbcType=INTEGER},
+            bao_pin          = #{baoPin,jdbcType=INTEGER},
+            lai_yuan         = #{laiYuan,jdbcType=VARCHAR},
+            status           = #{status,jdbcType=INTEGER},
+            update_result    = #{updateResult,jdbcType=VARCHAR},
+            result           = #{result,jdbcType=VARCHAR}
+        where id = #{id,jdbcType=INTEGER}
+    </update>
+</mapper>
