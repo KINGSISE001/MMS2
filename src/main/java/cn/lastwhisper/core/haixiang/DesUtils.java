@@ -16,7 +16,7 @@ import javax.crypto.Cipher;
 public class DesUtils {
   
   /** 字符串默认键值     */
-  private static String strDefaultKey = "seafly-java";
+  private static final String strDefaultKey = "seafly-java";
 
   /** 加密工具     */
   private Cipher encryptCipher = null;

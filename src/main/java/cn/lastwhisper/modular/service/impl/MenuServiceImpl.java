@@ -28,7 +28,7 @@ import java.util.List;
 @Service
 public class MenuServiceImpl implements MenuService {
 
-	private static Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
+	private static final Logger logger = LoggerFactory.getLogger(MenuServiceImpl.class);
 	
 	@Autowired
 	private MenuMapper menuMapper;
@@ -137,74 +137,66 @@ public class MenuServiceImpl implements MenuService {
 		// 从缓存中读取数据
 		//Jedis jedis = jedisPool.getResource();
 		Menu menu;
-		try {
-			
-		
-				// 获取根菜单
-				List<Menu> root = menuMapper.selectMenu("-1");
-				// 用户下的菜单集合 找数据库
-				//			List<Menu> userMenus = menuMapper.selectMenuByUserid(userid);
-				// 用户下的菜单集合 找缓存
-				List<Menu> userMenus = findMenuListByUserid(userid);
-				// 根菜单
-				menu = cloneMenu(root.get(0));
-				// 暂存一级菜单
-				Menu _m1 = null;
-				// 暂存二级菜单
-				Menu _m2 = null;
-				// 获取全部的一级菜单
-				List<Menu> parentMenus = menuMapper.selectMenu("0");
-				// 循环一级菜单
-				for (Menu m1 : parentMenus) {
-					_m1 = cloneMenu(m1);
-					// 获取当前一级菜单的所有二级菜单
-					List<Menu> leafMenus = menuMapper.selectMenu(_m1.getMenuid());
-					// 循环匹配二级菜单
-					for (Menu m2 : leafMenus) {
-						for (Menu userMenu : userMenus) {
-							if (userMenu.getMenuid().equals(m2.getMenuid())) {
-								// 将二级菜单加入一级菜单
-								_m2 = cloneMenu(m2);
-								_m1.getMenus().add(_m2);
-							}
-						}
-					}
-					// 有二级菜单我们才加进来
-					if (_m1.getMenus().size() > 0) {
-						// 把一级菜单加入到根菜单下
-						menu.getMenus().add(_m1);
-					}
-				}
-				logger.debug("从数据库读取，设置缓存");
-				//			System.out.println("从数据库读取，设置缓存");
-				//jedis.set("menusEasyui_" + userid, JSON.toJSONString(menu));
-			
-				
-				//			menu = JSON.parseArray(easyuiMenusJson, Menu.class).get(0);
-				//			System.out.println("从缓存读取");
-				logger.debug("从缓存读取");
-			
-		} finally {
-			
-		}
-		return menu;
+
+
+        // 获取根菜单
+        List<Menu> root = menuMapper.selectMenu("-1");
+        // 用户下的菜单集合 找数据库
+        //			List<Menu> userMenus = menuMapper.selectMenuByUserid(userid);
+        // 用户下的菜单集合 找缓存
+        List<Menu> userMenus = findMenuListByUserid(userid);
+        // 根菜单
+        menu = cloneMenu(root.get(0));
+        // 暂存一级菜单
+        Menu _m1 = null;
+        // 暂存二级菜单
+        Menu _m2 = null;
+        // 获取全部的一级菜单
+        List<Menu> parentMenus = menuMapper.selectMenu("0");
+        // 循环一级菜单
+        for (Menu m1 : parentMenus) {
+            _m1 = cloneMenu(m1);
+            // 获取当前一级菜单的所有二级菜单
+            List<Menu> leafMenus = menuMapper.selectMenu(_m1.getMenuid());
+            // 循环匹配二级菜单
+            for (Menu m2 : leafMenus) {
+                for (Menu userMenu : userMenus) {
+                    if (userMenu.getMenuid().equals(m2.getMenuid())) {
+                        // 将二级菜单加入一级菜单
+                        _m2 = cloneMenu(m2);
+                        _m1.getMenus().add(_m2);
+                    }
+                }
+            }
+            // 有二级菜单我们才加进来
+            if (_m1.getMenus().size() > 0) {
+                // 把一级菜单加入到根菜单下
+                menu.getMenus().add(_m1);
+            }
+        }
+        logger.debug("从数据库读取，设置缓存");
+        //			System.out.println("从数据库读取，设置缓存");
+        //jedis.set("menusEasyui_" + userid, JSON.toJSONString(menu));
+
+
+        //			menu = JSON.parseArray(easyuiMenusJson, Menu.class).get(0);
+        //			System.out.println("从缓存读取");
+        logger.debug("从缓存读取");
+
+        return menu;
 	}
 
 	@Override
 	public List<Menu> findMenuListByUserid(Integer userid) {
 		
 		List<Menu> menuList;
-		try {
-			
-			
-				// 1.从数据库中查出来，放入缓存中
-				menuList = menuMapper.selectMenuByUserid(userid);
-				
-				logger.debug("从数据库中查询menuList");
-			
-		} finally {
-		
-		}
-		return menuList;
+
+
+        // 1.从数据库中查出来，放入缓存中
+        menuList = menuMapper.selectMenuByUserid(userid);
+
+        logger.debug("从数据库中查询menuList");
+
+        return menuList;
 	}
 }

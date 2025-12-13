@@ -13,7 +13,7 @@ public interface MtService {
 	 *  @param AppPoiCode
 	 *  @throws Exception
 	 */
-	public MtResult medicineBatch(String AppPoiCode,String poiname) throws Exception;
+    MtResult medicineBatch(String AppPoiCode,String poiname) throws Exception;
 	/**
 	 * 
 	 *  Description:拉取商品(不删除)
@@ -21,7 +21,7 @@ public interface MtService {
 	 *  @param AppPoiCode
 	 *  @throws Exception
 	 */
-	public MtResult medicineBatchs(String AppPoiCode ,String poiname) throws Exception;
+    MtResult medicineBatchs(String AppPoiCode ,String poiname) throws Exception;
 	
 	/**
 	 * 
@@ -31,7 +31,7 @@ public interface MtService {
 	 * @return 
 	 *  @throws Exception
 	 */
-	public GlobalResult ShopRetailZheKou(String AppPoiCode) throws Exception;
+    GlobalResult ShopRetailZheKou(String AppPoiCode) throws Exception;
 	/**
 	 * 
 	 *  Description:拉取爆品活动
@@ -39,8 +39,8 @@ public interface MtService {
 	 *  @param AppPoiCode
 	 *  @throws Exception
 	 */
-	public GlobalResult ShopRetailBaoPing(String AppPoiCode)throws Exception;
-	public void ActRetailDiscount() throws Exception;
+    GlobalResult ShopRetailBaoPing(String AppPoiCode)throws Exception;
+	void ActRetailDiscount() throws Exception;
 	/**
 	 *
 	 *  Description:删除折扣活动
@@ -48,7 +48,7 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public MtResult RetailZheKouDiscountBatchDelete(String poiCode) throws Exception;
+    MtResult RetailZheKouDiscountBatchDelete(String poiCode) throws Exception;
 	/**
 	 *
 	 *  Description:删除爆品活动
@@ -56,7 +56,7 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public MtResult RetailBaoPinDiscountBatchDelete(String poiCode) throws Exception;
+    MtResult RetailBaoPinDiscountBatchDelete(String poiCode) throws Exception;
 	/**
 	 * 
 	 *  Description:更新折扣活动
@@ -64,7 +64,7 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public void selectUpdateZheKouDiscount(String poiCode) throws Exception;
+    void selectUpdateZheKouDiscount(String poiCode) throws Exception;
 	/**
 	 * 
 	 *  Description:更新门店价格
@@ -72,7 +72,7 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public void selectUpdatePrice (String poiCode)throws Exception;
+    void selectUpdatePrice (String poiCode)throws Exception;
 	
 	/**
 	 * 
@@ -81,7 +81,7 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public void selectUpdateBaoPinDiscount(String poiCode) throws Exception;
+    void selectUpdateBaoPinDiscount(String poiCode) throws Exception;
 	
 	/**
 	 * 
@@ -90,7 +90,7 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public void selectDanCiUpdateZheKouDiscount(String poiCode) throws Exception;
+    void selectDanCiUpdateZheKouDiscount(String poiCode) throws Exception;
 	
 	
 	/**
@@ -100,14 +100,14 @@ public interface MtService {
 	 *  @param poiCode
 	 *  @throws Exception
 	 */
-	public void selectDanCiUpdateBaoPinDiscount(String poiCode) throws Exception;
+    void selectDanCiUpdateBaoPinDiscount(String poiCode) throws Exception;
 	/**
 	 * 
 	 *  Description: 临时删除药品的方法
 	 *  @author wangsheng  DateTime 2021年12月20日 下午3:50:36
 	 *  @return
 	 */
-	public List medicineBatchDeletes () ;
+    List medicineBatchDeletes () ;
 	/**
 	 * 
 	 *  Description: 更新个别价格（删除折扣）
@@ -116,7 +116,7 @@ public interface MtService {
 	 *  @return
 	 *  @throws Exception
 	 */
-	public MtResult  danCiDeleteZheKou(String poiCode) throws Exception;
+    MtResult  danCiDeleteZheKou(String poiCode) throws Exception;
 	
 	/**
 	 * 
@@ -126,7 +126,7 @@ public interface MtService {
 	 *  @return
 	 *  @throws Exception
 	 */
-	public MtResult  danCiUpdatePrice(String poiCode) throws Exception;
+    MtResult  danCiUpdatePrice(String poiCode) throws Exception;
 	
 	/**
 	 * 
@@ -136,8 +136,8 @@ public interface MtService {
 	 *  @return MtResult
 	 *  @throws Exception
 	 */
-	public MtResult danCiZheKouHuoDongUpdate(String poiCode)throws Exception;
-	public MtResult danCiBaoPinHuoDongUpdate(String poiCode) throws Exception;
+    MtResult danCiZheKouHuoDongUpdate(String poiCode)throws Exception;
+	MtResult danCiBaoPinHuoDongUpdate(String poiCode) throws Exception;
 	
 	/**
 	 * 单次价格更新计数

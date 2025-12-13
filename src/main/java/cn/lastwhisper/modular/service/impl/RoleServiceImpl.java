@@ -178,8 +178,6 @@ public class RoleServiceImpl implements RoleService {
 			System.out.println("更新角色对应的对应的权限菜单 ，清除缓存");
 		} catch (Exception e) {
 			e.printStackTrace();
-		}finally {
-		
 		}
 		return GlobalResult.build(200, "权限设置成功");
 	}

@@ -37,8 +37,8 @@ public class SfApiServiceImpl implements SfApiService{
 
 		SeaFlyResult result = SeaflyApi.doPost(sfApiConfig,"getvipcards.api", paramMap, SeaFlyResult.class);
 		if (result.getStatus()== 300) {
+			System.err.println("getvipcards.api : : "+result.getMsg());
 			emailService.sendMailSimple("949092641@qq.com","导出会员信息" ,accountName+ result.getMsg());
-
 		}
 		return result;
 	}
@@ -66,13 +66,13 @@ public class SfApiServiceImpl implements SfApiService{
 				String[] detailData= new String[0];
 				data.put("detailData", detailData);
 				SeaFlyResult result = SeaflyApi.doPost(sfApiConfig,"inputbills.api", paramMap, data, SeaFlyResult.class);
-
+				System.out.println(result.toString());
 				Log log = new Log();
 				log.setOperatedate(new Date());
 				log.setOperateor(indexData.get("billnumber").toString());
 				log.setOperateresult(String.valueOf(indexData.get("addintegral").toString()));
 				log.setOperatetype(JSON.toJSONString(result.getMsg()));
-				log.setIp(""+vipid);
+				log.setIp(String.valueOf(vipid));
 				logService.addLog(log);
 				int  status= result.getStatus();
 				if (status== 300) {
@@ -85,8 +85,8 @@ public class SfApiServiceImpl implements SfApiService{
 					emailService.sendMailSimple("894488922@qq.com","叮咚积分订单" ,accountName+":"+ result.getMsg()+"叮咚积分同步到海翔订单:"+result.getMsg()+",客户id:"+vipid+",订单单号:"+indexData.get("billnumber").toString());
 					emailService.mesPost("叮咚积分同步到海翔订单:"+result.getMsg()+",客户id:"+vipid+",订单单号:"+indexData.get("billnumber").toString());
 				}else {
-					emailService.sendMailSimple("949092641@qq.com","叮咚积分异常" ,accountName+"("+vipid+")"+result.toString());
-					emailService.mesPost("叮咚积分同步到海翔异常:"+result.toString()+",客户id:"+vipid);
+					emailService.sendMailSimple("949092641@qq.com","叮咚积分异常" ,accountName+"("+vipid+")"+ result);
+					emailService.mesPost("叮咚积分同步到海翔异常:"+ result +",客户id:"+vipid);
 
 					emailService.sendMailSimple("894488922@qq.com","叮咚积分异常" ,accountName+"("+vipid+")请查看，手动补单");
 					emailService.mesPost("叮咚积分同步到海翔异常: {《请手动补单》 }"+",客户id:"+vipid);

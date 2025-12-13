@@ -1,5 +1,6 @@
 package cn.lastwhisper.core.task;
 
+import cn.lastwhisper.modular.vo.EmailInfo;
 import org.apache.ibatis.io.Resources;
 import org.apache.ibatis.jdbc.ScriptRunner;
 import org.apache.ibatis.session.SqlSession;
@@ -44,7 +45,7 @@ import java.util.concurrent.Semaphore;
 @EnableAsync
 public class GoBackTask implements ApplicationContextAware {
 
-	private static Logger logger = LoggerFactory.getLogger(GoBackTask.class);
+	private static final Logger logger = LoggerFactory.getLogger(GoBackTask.class);
 	private static ApplicationContext applicationContext;
 	@Autowired
 	private o2o_operate_upload_priceMapper o2o_operate_upload_priceMapper;
@@ -61,10 +62,9 @@ public class GoBackTask implements ApplicationContextAware {
 	private hxProductListMapper hxProductListMapper;
 
 
-
 	public class MyTask implements Runnable {
-		private Semaphore Semaphore;
-		private hxProductList HX;
+		private final Semaphore Semaphore;
+		private final hxProductList HX;
 
 		public MyTask(Semaphore Semaphore, hxProductList HX) {
 			this.Semaphore = Semaphore;
@@ -79,7 +79,7 @@ public class GoBackTask implements ApplicationContextAware {
 				logger.info("获取令牌");
 				jiFen.listCard(HX);//同步海翔积分到数据库
 				jiFen.findCard(HX);//叮咚积分查询,同步到库，无则创建会员用户
-				jiFen.cyjftbu(HX);//差异积分同步
+				jiFen.cyjftbu(HX);//差异正积分同步
 				jiFen.fujifengtongbu(HX); //负积分扣除
 				logger.info("运行完毕,释放令牌");
 				Semaphore.release();//释放信号

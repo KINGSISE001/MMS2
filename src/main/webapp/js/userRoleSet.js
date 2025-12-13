@@ -46,7 +46,7 @@ $(function() {
 		var user_id = $('#grid').datagrid("getSelected").user_id;
 		// 选择的节点
 		var nodes = $('#tree').tree('getChecked');
-		var checkedIds = new Array();
+		var checkedIds = [];
 		$.each(nodes, function(i, node) {
 			checkedIds.push(node.id);
 		})

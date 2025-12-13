@@ -49,7 +49,7 @@ public class MtProductServiceImpl implements MtProductService {
 		dming dming =new dming();
 		dming.setDm(dm);
 		dming.setZhuangtai(zhuangtai);
-		System.err.println(dming.toString());
+		System.err.println(dming);
 		return Dmingmapper.selectByPrimaryDm(dming);
 	}
 

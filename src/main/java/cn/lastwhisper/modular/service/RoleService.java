@@ -35,7 +35,7 @@ public interface RoleService {
 	* @author 最后的轻语_dd43 
 	* @date 2019年2月14日下午7:08:40
 	 */
-	public EasyUIDataGridResult findRolelistByPage(Integer page, Integer rows,Role role);
+    EasyUIDataGridResult findRolelistByPage(Integer page, Integer rows,Role role);
 	/**
 	 * 
 	* @Title: findRoleByEnble 
@@ -44,7 +44,7 @@ public interface RoleService {
 	* @author 最后的轻语_dd43 
 	* @date 2019年2月16日下午12:34:06
 	 */
-	public EasyUIDataGridResult findRoleList();
+    EasyUIDataGridResult findRoleList();
 	
 	/**
 	 * 
@@ -53,7 +53,7 @@ public interface RoleService {
 	 * @param q 角色名
 	 * @return
 	 */
-	public List<Role> findRoleName(String q);
+    List<Role> findRoleName(String q);
 	
 	/**
 	 * 
@@ -64,7 +64,7 @@ public interface RoleService {
 	* @author 最后的轻语_dd43 
 	* @date 2019年2月14日下午8:18:37
 	 */
-	public GlobalResult updateRole(Role role);
+    GlobalResult updateRole(Role role);
 	/**
 	 * 
 	* @Title: addRole 
@@ -74,7 +74,7 @@ public interface RoleService {
 	* @author 最后的轻语_dd43 
 	* @date 2019年2月14日下午10:11:23
 	 */
-	public GlobalResult addRole(Role role);
+    GlobalResult addRole(Role role);
 	/**
 	 * 
 	 * @Title: deleteRoleById   
@@ -82,7 +82,7 @@ public interface RoleService {
 	 * @param uuid
 	 * @return
 	 */
-	public GlobalResult deleteRoleById(Integer uuid);
+    GlobalResult deleteRoleById(Integer uuid);
 	
 	/**
 	 * 
@@ -97,7 +97,7 @@ public interface RoleService {
 	* @author 最后的轻语_dd43 
 	* @date 2019年2月16日下午4:40:34
 	 */
-	public List<EasyUIOptionalTreeNode> findRoleMenuByRoleid(Integer roleuuid);
+    List<EasyUIOptionalTreeNode> findRoleMenuByRoleid(Integer roleuuid);
 	/**
 	 * 
 	* @Title: updateRoleMenu
@@ -108,5 +108,5 @@ public interface RoleService {
 	* @author 最后的轻语_dd43 
 	* @date 2019年2月16日下午8:10:20
 	 */
-	public GlobalResult updateRoleMenu(Integer roleuuid, String checkedIds);
+    GlobalResult updateRoleMenu(Integer roleuuid, String checkedIds);
 }

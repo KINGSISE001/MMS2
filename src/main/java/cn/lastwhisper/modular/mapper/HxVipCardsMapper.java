@@ -10,7 +10,6 @@ import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 
 import cn.lastwhisper.modular.pojo.HxVipCards;
-import net.sf.jsqlparser.statement.select.Select;
 @Mapper
 @Repository
 public interface HxVipCardsMapper {
@@ -26,6 +25,9 @@ public interface HxVipCardsMapper {
  List <HxVipCards> selectAll (@Param("company") Integer company,@Param("start") Integer start,@Param("end")  Integer end);
 
  int updateByVipId (@Param("vipid") Integer vipid,@Param("ptjfen")Integer ptjfen,@Param("userid") Integer userid);
+
+  int updatehuangtai();
+
  int selectJfCount (@Param("company") Integer company);
  List <HxVipCards> selectJf (@Param("company") Integer company,@Param("start") Integer start,@Param("end")  Integer end);
 

@@ -9,12 +9,12 @@ import cn.lastwhisper.modular.vo.GlobalResult;
 
 public interface ztService {
 
-	public  GlobalResult addZtxxi(o2oZtzi o2oZtzi ) ;
+	GlobalResult addZtxxi(o2oZtzi o2oZtzi ) ;
 	
-	public  GlobalResult findAll() ;
+	GlobalResult findAll() ;
 	
-	public  GlobalResult selectByName(String names);
+	GlobalResult selectByName(String names);
 	
-	public  GlobalResult updateZtaiById(o2oZtzi record);
+	GlobalResult updateZtaiById(o2oZtzi record);
 	
 }

@@ -189,7 +189,7 @@
   )
   </foreach>
   on DUPLICATE key update
-  tel=VALUES(tel),intergral=VALUES(intergral),code=values(code),name=values(name)
+  tel=VALUES(tel),intergral=VALUES(intergral),code=values(code),name=values(name),hxzhuangtai=2
  </insert>
   
   
@@ -198,7 +198,7 @@
    	count(vipid) as count
     from HX_vipcards
     where 
- <![CDATA[tel <> '' and intergral>=0 ]]>
+ <![CDATA[ tel <> '' and intergral>0   ]]>
  and  companyId= #{company,jdbcType=INTEGER} 
   </select>
   
@@ -208,7 +208,7 @@
    <include refid="Base_Column_List" />
     from HX_vipcards
    where 
- <![CDATA[tel <> '' and intergral>=0]]>
+ <![CDATA[ tel <> '' and intergral>0  ]]>
  and  companyId= #{company,jdbcType=INTEGER} 
     limit #{start,jdbcType=INTEGER} , #{end,jdbcType=INTEGER}
   </select>
@@ -217,15 +217,15 @@
   <select  id="selectJfCount" resultType="java.lang.Integer">
     SELECT count(vipid) as count from HX_vipcards
 	where
- <![CDATA[ intergral >=0  and tel <>''  and  (intergral-ptjfen) >=0]]>
-  and  companyId= #{company,jdbcType=INTEGER} 
+ <![CDATA[ intergral >=0  and tel <>''  and  (intergral-ptjfen) >0 ]]>
+  and  companyId= #{company,jdbcType=INTEGER} and ddzhuangtai=2 and hxzhuangtai=2
   </select>
 
    <select  id="selectJf" parameterType="java.lang.Integer"  resultType="cn.lastwhisper.modular.pojo.HxVipCards">
     SELECT vipid, tel ,intergral,ptjfen, (intergral-ptjfen) as jf from HX_vipcards
 	where
- <![CDATA[ intergral >=0  and tel <>''  and  (intergral-ptjfen) >=0]]>
-  and  companyId= #{company,jdbcType=INTEGER} 
+ <![CDATA[ intergral >=0  and tel <>''  and  (intergral-ptjfen) >0 ]]>
+  and  companyId= #{company,jdbcType=INTEGER}  and ddzhuangtai=2 and hxzhuangtai=2
   limit #{start,jdbcType=INTEGER} , #{end,jdbcType=INTEGER}
   </select>
   
@@ -250,8 +250,8 @@
   <select id="selectByCompanyId" parameterType="java.lang.Integer" resultType="HxVipCards">
    SELECT vipid, name, tel ,intergral,ptjfen, (intergral-ptjfen) as jf from HX_vipcards
 	where  
-	<![CDATA[ intergral >=0 and tel <>''  and  (intergral-ptjfen) <=0 ]]>
-	and companyid =#{companyId}
+	<![CDATA[ intergral >=0 and tel <>''  and  (intergral-ptjfen) < 0 ]]>
+	and companyid =#{companyId} and ddzhuangtai=2 and hxzhuangtai=2
 	ORDER BY tel
   </select>
   
@@ -261,13 +261,20 @@
     delete from HX_vipcards
     where vipid = #{vipid,jdbcType=INTEGER}
   </delete>
+
+  <update id="updatehuangtai" parameterType="java.lang.Integer">
+    update HX_vipcards
+    <set>
+      ddzhuangtai=1,hxzhuangtai=1,other10=intergral
+    </set>
+  </update>
   
   
    <update id="updateByVipId" parameterType="java.lang.Integer">
     update HX_vipcards
     <set>
       <if test="ptjfen != null">
-        ptjfen = #{ptjfen,jdbcType=INTEGER},
+        ptjfen = #{ptjfen,jdbcType=INTEGER},ddzhuangtai=2,
       </if>
       <if test="userid != null">
         ptuserid = #{userid,jdbcType=INTEGER}

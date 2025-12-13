@@ -1,6 +1,7 @@
 package cn.lastwhisper.modular.controller;
 
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
 import java.sql.SQLException;
 import java.util.Date;
 import java.util.HashMap;
@@ -167,8 +168,7 @@ public class UserController {
 		GlobalResult result = userService.updatePwd(user, oldPwd, newPwd);
 		// 密码修改完成后移除当前用户
 		UserUtils.removeSubjectUser();
-		;
-		return result;
+        return result;
 	}
 
 	/**
@@ -283,19 +283,15 @@ public class UserController {
 	@LogAnno(operateType = "导出用户信息Excel")
 	@RequestMapping(value = "/user/userexport", method = RequestMethod.POST)
 	@ResponseBody
-	public void userexport(User user, HttpServletResponse response) {
+	public void userexport(User user, HttpServletResponse response) throws IOException {
 		String filename = "Users_exportBy" + UserUtils.getSubjectUser().getUser_name() + ".xls";
 		// 响应对象
-		try {
-			// 设置输出流,实现下载文件
-			response.setHeader("Content-Disposition",
-					"attachment;filename=" + new String(filename.getBytes(), "ISO-8859-1"));
+        // 设置输出流,实现下载文件
+        response.setHeader("Content-Disposition",
+                "attachment;filename=" + new String(filename.getBytes(), StandardCharsets.ISO_8859_1));
 
-			userService.export(response.getOutputStream(), user);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
+        userService.export(response.getOutputStream(), user);
+    }
 
 	/**
 	 * 

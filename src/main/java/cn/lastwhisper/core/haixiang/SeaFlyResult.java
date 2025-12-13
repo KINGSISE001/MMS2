@@ -47,6 +47,15 @@ public class SeaFlyResult {
         this.data = data;
     }
 
+    @Override
+    public String toString() {
+        return "SeaFlyResult{" +
+                "status=" + status +
+                ", msg='" + msg + '\'' +
+                ", data=" + data +
+                '}';
+    }
+
     public Integer getStatus() {
         return status;
     }

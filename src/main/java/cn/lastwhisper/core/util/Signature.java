@@ -1,6 +1,7 @@
 package cn.lastwhisper.core.util;
 
 import java.io.UnsupportedEncodingException;
+import java.nio.charset.StandardCharsets;
 import java.util.Map;
 import java.util.TreeMap;
 
@@ -46,12 +47,10 @@ public class Signature {
             sb.append("key").append("=").append(SignKey);
           
             //log.info("加密前[{}]:" , sb.toString());
-            String md5Str = DigestUtils.md5DigestAsHex(sb.toString().getBytes("utf-8")).toUpperCase();
+            String md5Str = DigestUtils.md5DigestAsHex(sb.toString().getBytes(StandardCharsets.UTF_8)).toUpperCase();
             //log.info("MD5SIGN:[{}]" , md5Str);
             return md5Str;
-		}  catch (UnsupportedEncodingException e) {
-			log.error("验签编码出错：{}",e.getLocalizedMessage());
-		}catch (Exception e) {
+		} catch (Exception e) {
 			log.error("验签出错：{}",e.getLocalizedMessage());
 		}
 		return null;
@@ -122,7 +121,7 @@ public class Signature {
 		int pos = 0;
  
 		while ((i = unicode.indexOf("\\u", pos)) != -1) {
-			sb.append(unicode.substring(pos, i));
+			sb.append(unicode, pos, i);
 			if (i + 5 < unicode.length()) {
 				pos = i + 6;
 				sb.append((char) Integer.parseInt(unicode.substring(i + 2, i + 6), 16));
@@ -161,7 +160,7 @@ public class Signature {
  
 			// 不够四位进行补0操作
 			if (hexString.length() < 4) {
-				unicode.append("0000".substring(hexString.length(), 4));
+				unicode.append("0000", hexString.length(), 4);
 			}
 			unicode.append(hexString);
 		}

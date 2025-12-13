@@ -42,7 +42,7 @@ $(function() {
 		//角色id
 		var uuid = $('#grid').datagrid("getSelected").uuid;
 		var nodes = $('#tree').tree('getChecked');
-		var checkedIds = new Array();
+		var checkedIds = [];
 		$.each(nodes,function(i,node){
 			checkedIds.push(node.id);
 		})

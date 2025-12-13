@@ -21,12 +21,12 @@ public interface MtProductService {
 	
 	GlobalResult selectShop();
 	GlobalResult selectDwCshi();
-	public GlobalResult  updateDwsqZtai (int ztai,int dwid,String newdz) ;
+	GlobalResult  updateDwsqZtai (int ztai,int dwid,String newdz) ;
 	
 	
 	dming selectProducts(String dm,int zhuangtai);
 	int updateDmZhuangtai(String dm,int zhuangtai);
-	public EasyUIDataGridResult selectdming(dming dming,Integer page, Integer rows);
+	EasyUIDataGridResult selectdming(dming dming,Integer page, Integer rows);
 	int findupdate(dming dming);
 	int adddming(dming  dming);
 	/**

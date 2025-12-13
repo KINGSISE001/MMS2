@@ -7,15 +7,20 @@ import java.io.IOException;
 
 import java.io.InputStreamReader;
 import java.text.MessageFormat;
+import java.util.Properties;
 
 
+import javax.annotation.Resource;
 import javax.mail.MessagingException;
 import javax.mail.internet.MimeMessage;
 
+import cn.lastwhisper.modular.vo.EmailInfo;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.springframework.mail.javamail.MimeMessageHelper;
 import org.springframework.stereotype.Service;
@@ -34,6 +39,10 @@ import okhttp3.Response;
 public class EmailServiceImpls implements EmailService {
 	private static final Logger LOGGER = LoggerFactory.getLogger(EmailServiceImpls.class);
 
+
+	@Resource
+	EmailInfo emailInfo;
+
 	/**
 	 * @方法名: sendMailSimple
 	 * @参数名：@param Title  邮件主题
@@ -44,24 +53,29 @@ public class EmailServiceImpls implements EmailService {
 	@Override
 	public void sendMailSimple(String to, String Title, String content) throws Exception {
 
+		final Properties props = new Properties();
+
+		props.put("mail.smtp.starttls.enable", "true");
+		props.put("mail.smtp.auth","true");
+		props.put("mail.smtp.ssl.enable","true");
+		props.put("mail.smtp.ssl.checkserveridentity","true");
+		props.put("mail.smtp.ssl.protocols","TLSv1.2");
+
+
+
 		JavaMailSenderImpl sender = new JavaMailSenderImpl();
 
 		sender.setHost("smtp.qq.com");
-		sender.setPort(587);
-		sender.setUsername("949092641@qq.com");
-		sender.setPassword("fvqcpzeallnabfeb"); //不是你登录邮箱的密码
+		sender.setPort(465);
+		sender.setUsername(emailInfo.getUserName());
+		sender.setPassword(emailInfo.getPassword()); //不是你登录邮箱的密码
+		sender.setJavaMailProperties(props);
 
-		/*  Properties pro = System.getProperties(); // 下面各项缺一不可
-		pro.put("mail.smtp.auth", "true");
-		pro.put("mail.smtp.ssl.enable", "true");
-		pro.put("mail.smtp.socketFactory.class", "javax.net.ssl.SSLSocketFactory");
-		
-		sender.setJavaMailProperties(pro);*/
 
 		MimeMessage message = sender.createMimeMessage();
 		try {
 			MimeMessageHelper helper = new MimeMessageHelper(message, true,"utf-8");
-			helper.setFrom("949092641@qq.com"); // 发送人 
+			helper.setFrom(emailInfo.getUserName()); // 发送人
 			helper.setTo(to); // 收件人  
 			helper.setSubject(Title); // 标题
 			helper.setText(buildContent(Title,content),true); // 内容

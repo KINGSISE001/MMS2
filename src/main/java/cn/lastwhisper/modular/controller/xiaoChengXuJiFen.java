@@ -64,8 +64,7 @@ public class xiaoChengXuJiFen {
 		
 		jiFens.integralCallback(storeid, userid ,integral);
 			
-			
-			return MtResult.ok();
+		return MtResult.ok();
 		}
 
 	}
@@ -114,10 +113,10 @@ public class xiaoChengXuJiFen {
 			@RequestParam(value = "rows", required = true, defaultValue = "10") Integer rows) {
 		User user = UserUtils.getSubjectUser();
 		if (user.getDingDongId()!=null) {
-			System.err.println(user.getDingDongId()+""+user.getUser_name());
+			System.err.println(user.getDingDongId()+user.getUser_name());
 			return jiFens.SelectErrIntegral(user.getDingDongId(), page, rows);
 		}
-		System.err.println(user.getDingDongId()+""+user.getUser_name());
+		System.err.println(user.getDingDongId()+user.getUser_name());
 		return null;
 		
 	}

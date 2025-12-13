@@ -12,7 +12,7 @@
 		<param-name>contextConfigLocation</param-name>
 		<param-value>classpath*:applicationContext*.xml</param-value>
 	</context-param>
-	
+
 		<context-param>
 		<param-name>spring.profiles.active</param-name>
 		<param-value>dev</param-value>
@@ -87,7 +87,7 @@
 		<servlet-name>DruidStatView</servlet-name>
 		<url-pattern>/druid/*</url-pattern>
 	</servlet-mapping>
-	
+
 	<!-- 添加Web应用等监控 -->
 	<filter>
 		<filter-name>DruidWebStatFilter</filter-name>

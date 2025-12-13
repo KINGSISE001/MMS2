@@ -71,7 +71,7 @@ public interface MenuMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月16日下午7:05:10
 	 */
-	public List<Menu> selectMenuIdName(@Param("pid") String pid);
+    List<Menu> selectMenuIdName(@Param("pid") String pid);
 
 	/**
 	 * 
@@ -82,7 +82,7 @@ public interface MenuMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月16日下午8:40:39
 	 */
-	public List<Menu> selectMenuByUserid(@Param("userid") Integer userid);
+    List<Menu> selectMenuByUserid(@Param("userid") Integer userid);
 	
 	/**
 	 * 
@@ -93,6 +93,6 @@ public interface MenuMapper {
 	* @author 最后的轻语_dd43
 	* @date 2019年2月16日下午9:04:26
 	 */
-	public List<Menu> selectMenu(@Param("pid") String pid);
+    List<Menu> selectMenu(@Param("pid") String pid);
 
 }

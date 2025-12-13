@@ -350,7 +350,7 @@ public class MtServiceImpl implements MtService {
 		for (int i = 0; i < page; i++) {
 			List<o2o_operate_upload_price> list =o2o_operate_upload_priceMapper.selectUpdateBaoPinDiscount(poiCode,start,size);
 			String s = JSON.toJSONString(list);
-			MtResult result=mtSservice.ActRetailDiscountBatchSave(poiCode,56,s);;
+			MtResult result=mtSservice.ActRetailDiscountBatchSave(poiCode,56,s);
 			logger.info("上传或更新爆品活动"+i+result.toString());
 			start=start+size;
 		}
@@ -525,7 +525,7 @@ public class MtServiceImpl implements MtService {
 			maps.put("poiCode",poiCode);
 			maps.put("start",start);
 			maps.put("size",size);
-			System.err.println(maps.toString());
+			System.err.println(maps);
 			List<o2o_operate_upload_price> list =o2o_operate_upload_priceMapper.findDanCiPriceUpdate(maps);
 			String s=JSON.toJSONString(list);
 			MtResult result =mtSservice.medicinePrice(poiCode,s);

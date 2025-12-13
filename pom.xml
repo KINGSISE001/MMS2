@@ -139,27 +139,16 @@
 
         <!-- 日志相关包 -->
 
-  <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-api</artifactId>
-    <version>2.17.2</version>
-  </dependency>
-  <dependency>
-    <groupId>org.apache.logging.log4j</groupId>
-    <artifactId>log4j-core</artifactId>
-    <version>2.17.2</version>
-  </dependency>
-  <dependency>
-    	<groupId>org.apache.logging.log4j</groupId>
-    	<artifactId>log4j-slf4j-impl</artifactId>
-    	<version>2.17.2</version>
-    </dependency>
-    <dependency>
-    	<groupId>org.apache.logging.log4j</groupId>
-    	<artifactId>log4j-web</artifactId>
-    	<version>2.17.2</version>
-    	<scope>runtime</scope>
-    </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-core</artifactId>
+            <version>2.17.1</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.logging.log4j</groupId>
+            <artifactId>log4j-api</artifactId>
+            <version>2.17.1</version>
+        </dependency>
 
 
         <!-- 单元测试相关包 -->
@@ -259,46 +248,46 @@
       <artifactId>HikariCP</artifactId>
       <version>3.4.5</version>
   </dependency>
+        <!--美团依赖 -->
+        <dependency>
+            <groupId>com.shangou</groupId>
+            <artifactId>shangouopen</artifactId>
+            <version>1.0.19</version>
+        </dependency>
 
-  <!--美团依赖 -->
-  <dependency>
-      <groupId>com.shangou</groupId>
-      <artifactId>shangouopen</artifactId>
-      <version>1.0.19</version>
-  </dependency>
   <!-- https://mvnrepository.com/artifact/com.squareup.okhttp3/okhttp -->
 <dependency>
     <groupId>com.squareup.okhttp3</groupId>
     <artifactId>okhttp</artifactId>
     <version>${okhttp.version}</version>
-    <exclusions>
-        <exclusion>
-            <artifactId>kotlin-stdlib</artifactId>
-            <groupId>org.jetbrains.kotlin</groupId>
-        </exclusion>
-        <exclusion>
-            <artifactId>kotlin-stdlib-common</artifactId>
-            <groupId>org.jetbrains.kotlin</groupId>
-        </exclusion>
-    </exclusions>
-</dependency>
-  <!--Jackson required包
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-core</artifactId>
-			<version>2.8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-databind</artifactId>
-			<version>2.8.1</version>
-		</dependency>
-		<dependency>
-			<groupId>com.fasterxml.jackson.core</groupId>
-			<artifactId>jackson-annotations</artifactId>
-			<version>2.8.1</version>
-		</dependency>
-   -->
+        <!--<exclusions>
+           <exclusion>
+               <artifactId>kotlin-stdlib</artifactId>
+               <groupId>org.jetbrains.kotlin</groupId>
+           </exclusion>
+           <exclusion>
+               <artifactId>kotlin-stdlib-common</artifactId>
+               <groupId>org.jetbrains.kotlin</groupId>
+           </exclusion>
+       </exclusions> -->
+   </dependency>
+     <!--Jackson required包
+           <dependency>
+               <groupId>com.fasterxml.jackson.core</groupId>
+               <artifactId>jackson-core</artifactId>
+               <version>2.8.1</version>
+           </dependency>
+           <dependency>
+               <groupId>com.fasterxml.jackson.core</groupId>
+               <artifactId>jackson-databind</artifactId>
+               <version>2.8.1</version>
+           </dependency>
+           <dependency>
+               <groupId>com.fasterxml.jackson.core</groupId>
+               <artifactId>jackson-annotations</artifactId>
+               <version>2.8.1</version>
+           </dependency>
+      -->
   <dependency>
     <groupId>cn.hutool</groupId>
     <artifactId>hutool-all</artifactId>

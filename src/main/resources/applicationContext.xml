@@ -17,7 +17,6 @@
 	<!-- 加载配置文件 -->
 <!--	<context:property-placeholder location="classpath:db-local.properties" />-->
 	<context:property-placeholder location="classpath:db.properties" ignore-unresolvable="true"/>
-
 	<!-- 注解开发 -->
 	<!-- 自动扫描组件，这里要把controler下面的 controller去除，他们是在spring3-servlet.xml中配置的，如果不去除会影响事务管理的。 -->
 	<context:component-scan
@@ -60,6 +59,7 @@
 		<!-- 数据源 -->
 		<property name="dataSource" ref="dataSource" />
 	</bean>
+
 
 	<!-- 配置mapper扫描，并创建mapper.java的实例对象 -->
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">

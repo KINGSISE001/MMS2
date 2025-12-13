@@ -35,7 +35,7 @@ public interface LogMapper {
 	 * @param log
 	 * @return
 	 */
-	public List<Log> selectLoglistByPage(Log log);
+    List<Log> selectLoglistByPage(Log log);
 	/**
 	 *
 	 * @Title: selectLogOperateor
@@ -44,6 +44,6 @@ public interface LogMapper {
 	 * @param operateor
 	 * @return
 	 */
-	public List<Log> selectLogOperateor(@Param("operateor")String operateor);
+    List<Log> selectLogOperateor(@Param("operateor")String operateor);
 
 }

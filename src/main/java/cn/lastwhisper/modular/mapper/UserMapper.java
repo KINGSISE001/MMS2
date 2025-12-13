@@ -22,7 +22,7 @@ public interface UserMapper {
 	 * @param user_pwd 密码
 	 * @return
 	 */
-	public User selectUserBycodeAndpwd(@Param("user_code") String user_code,
+    User selectUserBycodeAndpwd(@Param("user_code") String user_code,
 			@Param("user_pwd") String user_pwd);
 	/**
 	 * 
@@ -31,7 +31,7 @@ public interface UserMapper {
 	 * @param user 查询条件
 	 * @return
 	 */
-	public List<User> selectUserlistByPage(User user);
+    List<User> selectUserlistByPage(User user);
 	/**
 	 * 
 	 * @Title: selectUserName   
@@ -39,7 +39,7 @@ public interface UserMapper {
 	 * @param user_name
 	 * @return
 	 */
-	public List<User> selectUserName(@Param("user_name")String user_name);
+    List<User> selectUserName(@Param("user_name")String user_name);
 	
 	/**
 	 * 
@@ -49,7 +49,7 @@ public interface UserMapper {
 	 * @author gj
 	 * @date 2019年2月16日下午2:50:20
 	 */
-	public List<Role> selectUserRole(@Param("user_id") Integer user_id);
+    List<Role> selectUserRole(@Param("user_id") Integer user_id);
 	/**
 	 * 
 	 * @Title: selectUserByUserCode   
@@ -58,7 +58,7 @@ public interface UserMapper {
 	 * @param user_code 用户账号
 	 * @return
 	 */
-	public List<User> selectUserByUserCode(String user_code);
+    List<User> selectUserByUserCode(String user_code);
 	
 	/**
 	 * 
@@ -67,7 +67,7 @@ public interface UserMapper {
 	 * @param user 用户
 	 * @return
 	 */
-	public Integer insertUser(User user);
+    Integer insertUser(User user);
 	
 	/**
 	 * 
@@ -79,7 +79,7 @@ public interface UserMapper {
 	* @author gj
 	* @date 2019年2月16日下午3:53:14
 	 */
-	public void insertUserRole(@Param("user_id") Integer user_id,@Param("roleuuid") Integer roleuuid);
+    void insertUserRole(@Param("user_id") Integer user_id,@Param("roleuuid") Integer roleuuid);
 	/**
 	 * 
 	 * @Title: updateUser   
@@ -87,7 +87,7 @@ public interface UserMapper {
 	 * @param user 用户信息
 	 * @return
 	 */
-	public Integer updateUser(User user);
+    Integer updateUser(User user);
 	
 	/**
 	 * 
@@ -96,7 +96,7 @@ public interface UserMapper {
 	 * @author: 最后的轻语_dd43    
 	 * @return
 	 */
-	public Integer updatePwdById(@Param("user_id") Integer user_id,@Param("user_pwd") String user_pwd);
+    Integer updatePwdById(@Param("user_id") Integer user_id,@Param("user_pwd") String user_pwd);
 	/**
 	 * 
 	 * @Title: updateUser   
@@ -104,7 +104,7 @@ public interface UserMapper {
 	 * @param user 用户账号
 	 * @return
 	 */
-	public Integer updateUserByUserCode(User user);
+    Integer updateUserByUserCode(User user);
 	/**
 	 * 
 	 * @Title: deleteUserById   
@@ -112,7 +112,7 @@ public interface UserMapper {
 	 * @param user_id 主键
 	 * @return
 	 */
-	public Integer deleteUserById(@Param("user_id") Integer user_id);
+    Integer deleteUserById(@Param("user_id") Integer user_id);
 	
 	/**
 	 * 
@@ -123,10 +123,10 @@ public interface UserMapper {
 	* @author gj
 	* @date 2019年2月16日下午3:51:24
 	 */
-	public void deleteUserRole(@Param("user_id") Integer user_id);
+    void deleteUserRole(@Param("user_id") Integer user_id);
 
 	
-	public int  selectUserBycode (@Param("user_code") String user_code);
+	int  selectUserBycode (@Param("user_code") String user_code);
 	
 	
 }

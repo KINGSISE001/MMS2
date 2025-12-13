@@ -166,7 +166,7 @@ Logger log=  LoggerFactory.getLogger(MtProductController.class);
 	@ResponseBody
 	public GlobalResult shangpings(@RequestBody String string, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println(string.toString());
+		System.out.println(string);
 		JSONArray jaonArray = JSONArray.parseArray(string);
 
 		List lists = new ArrayList();
@@ -305,8 +305,8 @@ return GlobalResult.build(200,"ok", mtProductService.findscdpxxs());
 	@ResponseBody
 	public GlobalResult upmdxx(@RequestBody String string, HttpServletRequest request, HttpServletResponse response)
 			throws Exception {
-		System.out.println(string.toString());
-			JSONObject jsonObject = JSONObject.parseObject(string.toString());
+		System.out.println(string);
+			JSONObject jsonObject = JSONObject.parseObject(string);
 			Map<String, String> maps = JSON.parseObject(jsonObject.toJSONString(), Map.class);
 			for (Object obj : maps.keySet()){
 			       System.out.println("key为："+obj+"值为："+maps.get(obj));

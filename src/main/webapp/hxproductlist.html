@@ -64,6 +64,12 @@
 			}
 		}
 	}, ] ];
+	function getSelected(){
+		var row = $('#dg').datagrid('getSelected');
+		if (row){
+			$.messager.alert('Info', row.itemid+":"+row.productid+":"+row.attr1);
+		}
+	}
 </script>
 </head>
 <body class="easyui-layout">

@@ -65,7 +65,7 @@ public class jiFen implements jiFens {
 	public  JSONObject chongZhi(int jifens,String user,int  company,int user_id,String qqkey) {
 		JSONObject bodysJson=null;
 		try {
-		TreeMap<String, Object > tMap= new TreeMap<String, Object>();
+		TreeMap<String, Object > tMap= new TreeMap<>();
 		tMap.put("company", company);//合作公司编号
 		tMap.put("money",jifens);//充值积分数
 		tMap.put("member", user);//要充值的用户
@@ -76,7 +76,7 @@ public class jiFen implements jiFens {
 		log.setOperateor(user);
 		log.setOperateresult(String.valueOf(jifens));
 		log.setOperatetype("充值积分到叮咚");
-		log.setIp(""+company);
+		log.setIp(String.valueOf(company));
 		logService.addLog(log);
 		String url="http://7ddapi.7dingdong.com/apidh_store/recharge?";
 		String signString=Signature.getSign(tMap,qqkey);
@@ -116,7 +116,7 @@ public class jiFen implements jiFens {
 		logs.setOperateor(user);
 		logs.setOperateresult(String.valueOf(jifens));
 		logs.setOperatetype("叮咚积分扣除");
-		logs.setIp(""+company);
+		logs.setIp(String.valueOf(company));
 		logService.addLog(logs);
 		String url="http://7ddapi.7dingdong.com/apidh_store/reduceIntegral?";
 		String signString=Signature.getSign(tMap,qqkey);
@@ -197,7 +197,7 @@ public class jiFen implements jiFens {
 	@Override
 	public boolean listCard(hxProductList hx) {
 		try {
-
+			hxVipCardsMapper.updatehuangtai();//初始化状态
 		SfApiConfig sfApiConfig=new SfApiConfig(hx.getAppid(),hx.getAppkey(), hx.getDomainaddress());
 		JSONObject jsonObject = JSONObject
 				.parseObject(JsonUtils.objectToJson(SfApiService.getVipCards(sfApiConfig, "1", "1", hx.getAccountname()).getData()));
@@ -213,10 +213,10 @@ public class jiFen implements jiFens {
 					JSONObject object = array.getJSONObject(j);
 					HxVipCards Vip = JSONObject.toJavaObject(object, HxVipCards.class);
 					
-						Vip.setUUID(SecureUtil.md5(Vip.getVipid()+""+hx.getUserId()));
+						Vip.setUUID(SecureUtil.md5(Vip.getVipid()+String.valueOf(hx.getUserId())));
 						Vip.setCompanyId(hx.getUserId());
-						log.info("{}查询到的积分{}",Vip.getTel(),Vip.getIntergral());
-					listCards.add(Vip);
+						log.info("{}查询到的积分{}--{}--",Vip.getTel(),Vip.getIntergral(),Vip.getVipid());
+				 listCards.add(Vip);
 				}
 				int s = hxVipCardsMapper.insertVipCards(listCards);
 				if (s > 0) {
@@ -247,13 +247,17 @@ public class jiFen implements jiFens {
 				int[] pageNo = PageUtil.transToStartEnd(i, 200);
 				System.err.println("共" + totalPage + "页,第" + (i + 1) + "页.开始位置:" + pageNo[0] + ",结束位置:" + pageNo[1]);
 				List<HxVipCards> listsCards = hxVipCardsMapper.selectAll(hxp.getUserId(),pageNo[0], 200);
-				System.err.println(listsCards.size());
+				log.info("查询条数：{}",listsCards.size());
 				for (HxVipCards hxVipCards : listsCards) {
 					JSONObject jiFen = chaXun(hxVipCards.getTel(), hxp.getDdkey(), hxp.getCompany(), hxp.getUserId());
-					System.err.println(jiFen.toJSONString());
+					log.info("查询：{}",jiFen.toJSONString());
 					int status = jiFen.getIntValue("status");
-					if (status == 400 && jiFen.getString("message").contains("未")) {
-						chongZhi(hxVipCards.getIntergral(), hxVipCards.getTel(), hxp.getCompany(), hxp.getUserId(),hxp.getDdkey());
+					if (status == 400 && jiFen.getString("message").contains("未查询到该用户信息")) {
+						if (hxVipCards.getIntergral()>0){
+							JSONObject info= chongZhi(hxVipCards.getIntergral(), hxVipCards.getTel(), hxp.getCompany(), hxp.getUserId(),hxp.getDdkey());
+							log.info("充值：{}",info.toJSONString());
+						}
+						log.info("充值：{}","0");
 					} else if (status == 200) {
 						JSONObject dataJson = jiFen.getJSONObject("data");
 						hxVipCardsMapper.updateByVipId(hxVipCards.getVipid(), dataJson.getIntValue("integral"), dataJson.getIntValue("user_id"));
@@ -282,8 +286,8 @@ public class jiFen implements jiFens {
 					int[] pageNo = PageUtil.transToStartEnd(i, 200);
 					List<HxVipCards> listsCards = hxVipCardsMapper.selectJf(hxp.getUserId(),pageNo[0], 200);
 					for (HxVipCards hxVipCards : listsCards) {
-						chongZhi(hxVipCards.getJf(), hxVipCards.getTel(), hxp.getCompany(), hxp.getUserId(),hxp.getDdkey());
-						log.info("同步的{}",hxVipCards.getTel());
+						JSONObject  info =chongZhi(hxVipCards.getJf(), hxVipCards.getTel(), hxp.getCompany(), hxp.getUserId(),hxp.getDdkey());
+						log.info("充值的{}---{}---{}",hxVipCards.getTel(),hxVipCards.getJf(),info.toJSONString());
 					}
 				}
 			} else {
@@ -328,9 +332,11 @@ public class jiFen implements jiFens {
 	@Override
 	public boolean fujifengtongbu(hxProductList hxp) {
 	
-		List<HxVipCards> list = hxVipCardsMapper.selectByCompanyId(Integer.valueOf(hxp.getUserId()));
+		List<HxVipCards> list = hxVipCardsMapper.selectByCompanyId(hxp.getUserId());
 		for (HxVipCards hxVipCards : list) {
-			fuJiFenChongZhi(hxVipCards.getJf()*-1, hxVipCards.getTel(), hxp.getCompany(), hxp.getUserId(),hxp.getDdkey());
+		JSONObject  info =fuJiFenChongZhi(hxVipCards.getJf()*-1, hxVipCards.getTel(), hxp.getCompany(), hxp.getUserId(),hxp.getDdkey());
+			log.info("扣除：{}",info.toJSONString());
+
 		}
 		return true;
 	}

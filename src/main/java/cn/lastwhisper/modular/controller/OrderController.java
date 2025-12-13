@@ -60,8 +60,7 @@ public class OrderController {
 			System.err.println("Completed:TEST!");
 			return MtResult.ok();
 		}
-		;
-		// 将 Map 转换为 实体类
+        // 将 Map 转换为 实体类
 		Completedorder completedorder = JSON.parseObject(JSON.toJSONString(map), Completedorder.class);
 		
 		Long OrderId =completedorder.getOrderId();
@@ -102,8 +101,7 @@ public class OrderController {
 			System.err.println("Completed:TEST!");
 			return MtResult.ok();
 		}
-		;
-		// 将 Map 转换为 实体类
+        // 将 Map 转换为 实体类
 		Completedorder completedorder = JSON.parseObject(JSON.toJSONString(map), Completedorder.class);
 		System.out.println("OrderId:" + completedorder.getOrderId());
 		List<Detail> lists = new ArrayList<Detail>();
@@ -164,9 +162,8 @@ public class OrderController {
 			System.err.println("Settlement:TEST!");
 			return GlobalResult.ok("ok");
 		}
-		;
 
-		SettlementInformation settlementinformation = JSON.parseObject(JSON.toJSON(map).toString(),
+        SettlementInformation settlementinformation = JSON.parseObject(JSON.toJSON(map).toString(),
 				SettlementInformation.class);
 		JSONArray activityDetailsjsonArray = JSONArray.parseArray(settlementinformation.getActivitydetails());
 		float chargeAmount = 0;
@@ -211,8 +208,8 @@ public class OrderController {
 		if (map.size() == 0) {
 			System.err.println("Refund:TEST!");
 			return GlobalResult.ok("ok");
-		};
-System.err.println(JSON.toJSONString(map));
+		}
+        System.err.println(JSON.toJSONString(map));
 return GlobalResult.ok("ok");
 	}
 
@@ -236,7 +233,7 @@ return GlobalResult.ok("ok");
 		if (page<=0) {
 			page =1;
 		}
-	int 	rows =request.getParameter("rows").equals("")?20:20;
+	int 	rows = 20;
 		
 		String maxtimeString =request.getParameter("maxtime");
 		if (maxtimeString.equals("")) {

@@ -103,7 +103,7 @@ public class OrderServicelmpl implements OrderService{
 	public EasyUIDataGridResult findDetailByOrderId(Long order) {
 		List<Detail> listdeDetails =detailMapper.selectByPrimaryKey(order);
 		EasyUIDataGridResult result = new EasyUIDataGridResult();
-		result.setTotal((int) listdeDetails.size());
+		result.setTotal(listdeDetails.size());
 		result.setRows(listdeDetails);
 		return result;
 	}

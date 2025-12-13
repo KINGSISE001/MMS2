@@ -60,7 +60,7 @@ public class zhongTaiController {
 	@ResponseBody
 	public GlobalResult updateZtaiById(@RequestBody String string) {
 
-		o2oZtzi o2oZtzi=JSONObject.toJavaObject((JSONObject)JSON.parse(string.toString()), o2oZtzi.class);
+		o2oZtzi o2oZtzi=JSONObject.toJavaObject((JSONObject)JSON.parse(string), o2oZtzi.class);
 		return ztService.updateZtaiById(o2oZtzi) ;
 	}
 }

@@ -122,7 +122,7 @@ public class UserUtils {
 	 */
 	@Deprecated
 	public static void removeSessionUser() {
-		getRequest().getSession().removeAttribute("user");;
+		getRequest().getSession().removeAttribute("user");
 	}
 	
 	@Test

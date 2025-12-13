@@ -28,7 +28,7 @@ public interface UserService {
 	* @param user_code
 	* @return
 	 */
-	public Integer findUserByCode(String user_code);
+    Integer findUserByCode(String user_code);
 	
 	/**
 	 * 
@@ -38,7 +38,7 @@ public interface UserService {
 	 * @param user_pwd 密码
 	 * @return
 	 */
-	public User findUserByCodeAndPwd(String user_code, String user_pwd);
+    User findUserByCodeAndPwd(String user_code, String user_pwd);
 	/**
 	 * 
 	 * @Title: findUserList   
@@ -47,7 +47,7 @@ public interface UserService {
 	 * @param rows 页面大小
 	 * @return
 	 */
-	public EasyUIDataGridResult findUserlistByPage(User user,Integer page, Integer rows);
+    EasyUIDataGridResult findUserlistByPage(User user,Integer page, Integer rows);
 	/**
 	 * 
 	 * @Title: findUserName   
@@ -55,7 +55,7 @@ public interface UserService {
 	 * @param q 用户名
 	 * @return
 	 */
-	public List<User> findUserName(String q);
+    List<User> findUserName(String q);
 	
 	/**
 	 * @Title: findUserRole
@@ -98,7 +98,7 @@ public interface UserService {
 	 * @param user 用户
 	 * @return
 	 */
-	public GlobalResult addUser(User user);
+    GlobalResult addUser(User user);
 	/**
 	 * 
 	 * @Title: updateUser   
@@ -106,7 +106,7 @@ public interface UserService {
 	 * @param 用户信息
 	 * @return
 	 */
-	public GlobalResult updateUser(User user);
+    GlobalResult updateUser(User user);
 	/**
 	 * 
 	 * @Title: updatePwd   
@@ -117,7 +117,7 @@ public interface UserService {
 	 * @param newPwd 新密码
 	 * @return
 	 */
-	public GlobalResult updatePwd(User user,String oldPwd,String newPwd);
+    GlobalResult updatePwd(User user,String oldPwd,String newPwd);
 	/**
 	 * 
 	 * @Title: deleteUser   
@@ -125,7 +125,7 @@ public interface UserService {
 	 * @param userId
 	 * @return
 	 */
-	public GlobalResult deleteUser(Integer user_id);
+    GlobalResult deleteUser(Integer user_id);
 	
 	/**
 	 * 
@@ -135,7 +135,7 @@ public interface UserService {
 	 * @param os
 	 * @param user
 	 */
-	public void export(OutputStream os, User user);
+    void export(OutputStream os, User user);
 	
 	/**
 	 * 
@@ -145,5 +145,5 @@ public interface UserService {
 	 * @param is
 	 * @throws IOException
 	 */
-	public Integer doImport(InputStream is) throws IOException;
+    Integer doImport(InputStream is) throws IOException;
 }

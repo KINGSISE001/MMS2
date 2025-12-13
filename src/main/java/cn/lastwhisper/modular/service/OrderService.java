@@ -23,7 +23,7 @@ public interface OrderService {
 	
 	Map selectorderinformation(@Param("AppPoiCode") String[] AppPoiCode ,int start, int size ,Long maxtime);
 
-	public EasyUIDataGridResult findOrderlistByPage(Completedorder completedorder,Integer page, Integer rows);
+	EasyUIDataGridResult findOrderlistByPage(Completedorder completedorder,Integer page, Integer rows);
 	
 	EasyUIDataGridResult findDetailByOrderId(Long order);
 	

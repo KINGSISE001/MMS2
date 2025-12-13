@@ -19,7 +19,7 @@ public interface LogService {
      * @return
      * @throws SQLException
      */
-    public boolean addLog(Log log) throws SQLException;
+    boolean addLog(Log log) throws SQLException;
 
 	/**   
 	 * @Title: findLoglistByPage   
@@ -30,7 +30,7 @@ public interface LogService {
 	 * @param log
 	 * @return      
 	 */
-	public EasyUIDataGridResult findLoglistByPage(Integer page, Integer rows, Log log);
+    EasyUIDataGridResult findLoglistByPage(Integer page, Integer rows, Log log);
 
 	/**   
 	 * @Title: findLogOperateor   
@@ -39,5 +39,5 @@ public interface LogService {
 	 * @param q
 	 * @return      
 	 */
-	public List<Log> findLogOperateor(String q);
+    List<Log> findLogOperateor(String q);
 }

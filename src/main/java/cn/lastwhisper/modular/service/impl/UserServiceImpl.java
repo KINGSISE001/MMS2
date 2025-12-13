@@ -194,7 +194,7 @@ public class UserServiceImpl implements UserService {
 		// 4.封装返回值将用户对应的角色设置为true
 		for (Role role : roleList) {
 			t1 = new EasyUIOptionalTreeNode();
-			t1.setId(role.getUuid() + "");
+			t1.setId(String.valueOf(role.getUuid()));
 			t1.setText(role.getName());
 			// 如果用户拥有这个角色，设为true
 			for (Role userRole : userRoleList) {

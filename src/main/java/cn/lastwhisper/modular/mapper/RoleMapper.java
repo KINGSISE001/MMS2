@@ -22,7 +22,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月14日下午7:12:56
 	 */
-	public List<Role> selectRolelistByPage(Role role);
+    List<Role> selectRolelistByPage(Role role);
 
 	/**
 	 * 
@@ -33,7 +33,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月16日下午12:28:09
 	 */
-	public List<Role> selectRoleList();
+    List<Role> selectRoleList();
 	/**
 	 * 
 	 * @Title: selectRoleName   
@@ -41,7 +41,7 @@ public interface RoleMapper {
 	 * @param name
 	 * @return
 	 */
-	public List<Role> selectRoleName(@Param("name")String name);
+    List<Role> selectRoleName(@Param("name")String name);
 
 	/**
 	 * 
@@ -52,7 +52,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月16日下午4:35:08
 	 */
-	public List<String> selectRoleMenuidByRoleid(@Param("roleuuid") Integer roleuuid);
+    List<String> selectRoleMenuidByRoleid(@Param("roleuuid") Integer roleuuid);
 
 	/**
 	 * 
@@ -63,7 +63,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月17日上午11:18:02
 	 */
-	public List<Integer> selectUseridByRoleuuid(@Param("roleuuid") Integer roleuuid);
+    List<Integer> selectUseridByRoleuuid(@Param("roleuuid") Integer roleuuid);
 
 	/**
 	 * 
@@ -74,7 +74,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月14日下午8:22:57
 	 */
-	public Integer updateRole(Role role);
+    Integer updateRole(Role role);
 
 	/**
 	 * 
@@ -85,7 +85,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月15日上午11:50:36
 	 */
-	public Integer insertRole(Role role);
+    Integer insertRole(Role role);
 	
 	/**
 	 * 
@@ -96,7 +96,7 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月16日下午8:07:02
 	 */
-	public void insertRolemenu(@Param("menuuuid") String menuuuid, @Param("roleuuid") Integer roleuuid);
+    void insertRolemenu(@Param("menuuuid") String menuuuid, @Param("roleuuid") Integer roleuuid);
 	
 	/**
 	 * 
@@ -105,7 +105,7 @@ public interface RoleMapper {
 	 * @param uuid
 	 * @return
 	 */
-	public Integer deleteRoleById(@Param("uuid") Integer uuid);
+    Integer deleteRoleById(@Param("uuid") Integer uuid);
 	
 	/**
 	 * 
@@ -115,6 +115,6 @@ public interface RoleMapper {
 	 * @author 最后的轻语_dd43
 	 * @date 2019年2月16日下午8:05:53
 	 */
-	public void deleteMenuidByRoleid(@Param("roleuuid") Integer roleuuid);
+    void deleteMenuidByRoleid(@Param("roleuuid") Integer roleuuid);
 
 }
