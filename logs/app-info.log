@@ -1,0 +1,210 @@
+2025-10-28 21:30:36.704 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.366 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sqlSessionFactory' of type [org.mybatis.spring.SqlSessionFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.394 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.481 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.486 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userMapper' of type [com.sun.proxy.$Proxy46] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.500 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'roleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.501 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'roleMapper' of type [com.sun.proxy.$Proxy47] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.504 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userServiceImpl' of type [cn.lastwhisper.modular.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.551 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'menuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.552 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'menuMapper' of type [com.sun.proxy.$Proxy48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.556 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'menuServiceImpl' of type [cn.lastwhisper.modular.service.impl.MenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.558 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'realm' of type [cn.lastwhisper.core.shiro.Realm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.605 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:30:37.624 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:14.536 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'dataSource' of type [com.alibaba.druid.pool.DruidDataSource] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.117 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sqlSessionFactory' of type [org.mybatis.spring.SqlSessionFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.136 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'sqlSessionFactory' of type [org.apache.ibatis.session.defaults.DefaultSqlSessionFactory] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.202 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.206 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userMapper' of type [com.sun.proxy.$Proxy46] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.216 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'roleMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.217 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'roleMapper' of type [com.sun.proxy.$Proxy47] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.219 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'userServiceImpl' of type [cn.lastwhisper.modular.service.impl.UserServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.252 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'menuMapper' of type [org.mybatis.spring.mapper.MapperFactoryBean] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.253 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'menuMapper' of type [com.sun.proxy.$Proxy48] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.255 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'menuServiceImpl' of type [cn.lastwhisper.modular.service.impl.MenuServiceImpl] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.258 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'realm' of type [cn.lastwhisper.core.shiro.Realm] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.303 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'securityManager' of type [org.apache.shiro.web.mgt.DefaultWebSecurityManager] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 21:34:15.330 [main] INFO  org.springframework.context.support.PostProcessorRegistrationDelegate$BeanPostProcessorChecker - Bean 'org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor#0' of type [org.apache.shiro.spring.security.interceptor.AuthorizationAttributeSourceAdvisor] is not eligible for getting processed by all BeanPostProcessors (for example: not eligible for auto-proxying)
+2025-10-28 22:47:00.040 [pool-2-thread-1] ERROR org.springframework.scheduling.support.TaskUtils$LoggingErrorHandler - Unexpected error occurred in scheduled task
+org.mybatis.spring.MyBatisSystemException: nested exception is org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.GetConnectionTimeoutException: wait millis 60008, active 0, maxActive 20, creating 1, createElapseMillis 120023, createErrorCount 1
+### The error may exist in cn/lastwhisper/modular/mapper/o2o_operate_upload_priceMapper.xml
+### The error may involve cn.lastwhisper.modular.mapper.o2o_operate_upload_priceMapper.piLiangRenWuHuoQu
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.GetConnectionTimeoutException: wait millis 60008, active 0, maxActive 20, creating 1, createElapseMillis 120023, createErrorCount 1
+	at org.mybatis.spring.MyBatisExceptionTranslator.translateExceptionIfPossible(MyBatisExceptionTranslator.java:96) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:441) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at com.sun.proxy.$Proxy45.selectList(Unknown Source) ~[?:?]
+	at org.mybatis.spring.SqlSessionTemplate.selectList(SqlSessionTemplate.java:224) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.apache.ibatis.binding.MapperMethod.executeForMany(MapperMethod.java:147) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.binding.MapperMethod.execute(MapperMethod.java:80) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.binding.MapperProxy$PlainMethodInvoker.invoke(MapperProxy.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.binding.MapperProxy.invoke(MapperProxy.java:86) ~[mybatis-3.5.10.jar:3.5.10]
+	at com.sun.proxy.$Proxy60.piLiangRenWuHuoQu(Unknown Source) ~[?:?]
+	at cn.lastwhisper.core.task.GoBackTask.goPiLiang(GoBackTask.java:147) ~[classes/:?]
+	at sun.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[?:1.8.0_341]
+	at sun.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[?:1.8.0_341]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_341]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_341]
+	at org.springframework.scheduling.support.ScheduledMethodRunnable.run(ScheduledMethodRunnable.java:84) ~[spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.scheduling.support.DelegatingErrorHandlingRunnable.run(DelegatingErrorHandlingRunnable.java:54) [spring-context-5.3.15.jar:5.3.15]
+	at org.springframework.scheduling.concurrent.ReschedulingRunnable.run(ReschedulingRunnable.java:95) [spring-context-5.3.15.jar:5.3.15]
+	at java.util.concurrent.Executors$RunnableAdapter.call(Executors.java:511) [?:1.8.0_341]
+	at java.util.concurrent.FutureTask.run(FutureTask.java:266) [?:1.8.0_341]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.access$201(ScheduledThreadPoolExecutor.java:180) [?:1.8.0_341]
+	at java.util.concurrent.ScheduledThreadPoolExecutor$ScheduledFutureTask.run(ScheduledThreadPoolExecutor.java:293) [?:1.8.0_341]
+	at java.util.concurrent.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1149) [?:1.8.0_341]
+	at java.util.concurrent.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:624) [?:1.8.0_341]
+	at java.lang.Thread.run(Thread.java:750) [?:1.8.0_341]
+Caused by: org.apache.ibatis.exceptions.PersistenceException: 
+### Error querying database.  Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.GetConnectionTimeoutException: wait millis 60008, active 0, maxActive 20, creating 1, createElapseMillis 120023, createErrorCount 1
+### The error may exist in cn/lastwhisper/modular/mapper/o2o_operate_upload_priceMapper.xml
+### The error may involve cn.lastwhisper.modular.mapper.o2o_operate_upload_priceMapper.piLiangRenWuHuoQu
+### The error occurred while executing a query
+### Cause: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.GetConnectionTimeoutException: wait millis 60008, active 0, maxActive 20, creating 1, createElapseMillis 120023, createErrorCount 1
+	at org.apache.ibatis.exceptions.ExceptionFactory.wrapException(ExceptionFactory.java:30) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:153) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at sun.reflect.GeneratedMethodAccessor217.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_341]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_341]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 22 more
+Caused by: org.springframework.jdbc.CannotGetJdbcConnectionException: Failed to obtain JDBC Connection; nested exception is com.alibaba.druid.pool.GetConnectionTimeoutException: wait millis 60008, active 0, maxActive 20, creating 1, createElapseMillis 120023, createErrorCount 1
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:83) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.10.jar:3.5.10]
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:132) ~[pagehelper-5.3.0.jar:?]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62) ~[mybatis-3.5.10.jar:3.5.10]
+	at com.sun.proxy.$Proxy75.query(Unknown Source) ~[?:?]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at sun.reflect.GeneratedMethodAccessor217.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_341]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_341]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 22 more
+Caused by: com.alibaba.druid.pool.GetConnectionTimeoutException: wait millis 60008, active 0, maxActive 20, creating 1, createElapseMillis 120023, createErrorCount 1
+	at com.alibaba.druid.pool.DruidDataSource.getConnectionInternal(DruidDataSource.java:1747) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource.getConnectionDirect(DruidDataSource.java:1419) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.dataSource_connect(FilterChainImpl.java:5059) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterAdapter.dataSource_getConnection(FilterAdapter.java:2756) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.dataSource_connect(FilterChainImpl.java:5055) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.stat.StatFilter.dataSource_getConnection(StatFilter.java:689) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.dataSource_connect(FilterChainImpl.java:5055) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:1397) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:1389) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource.getConnection(DruidDataSource.java:100) ~[druid-1.2.6.jar:1.2.6]
+	at org.springframework.jdbc.datasource.DataSourceUtils.fetchConnection(DataSourceUtils.java:159) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.datasource.DataSourceUtils.doGetConnection(DataSourceUtils.java:117) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.springframework.jdbc.datasource.DataSourceUtils.getConnection(DataSourceUtils.java:80) ~[spring-jdbc-5.3.15.jar:5.3.15]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.openConnection(SpringManagedTransaction.java:80) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.mybatis.spring.transaction.SpringManagedTransaction.getConnection(SpringManagedTransaction.java:67) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	at org.apache.ibatis.executor.BaseExecutor.getConnection(BaseExecutor.java:337) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.SimpleExecutor.prepareStatement(SimpleExecutor.java:86) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.SimpleExecutor.doQuery(SimpleExecutor.java:62) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.BaseExecutor.queryFromDatabase(BaseExecutor.java:325) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.BaseExecutor.query(BaseExecutor.java:156) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.executor.CachingExecutor.query(CachingExecutor.java:109) ~[mybatis-3.5.10.jar:3.5.10]
+	at com.github.pagehelper.PageInterceptor.intercept(PageInterceptor.java:132) ~[pagehelper-5.3.0.jar:?]
+	at org.apache.ibatis.plugin.Plugin.invoke(Plugin.java:62) ~[mybatis-3.5.10.jar:3.5.10]
+	at com.sun.proxy.$Proxy75.query(Unknown Source) ~[?:?]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:151) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:145) ~[mybatis-3.5.10.jar:3.5.10]
+	at org.apache.ibatis.session.defaults.DefaultSqlSession.selectList(DefaultSqlSession.java:140) ~[mybatis-3.5.10.jar:3.5.10]
+	at sun.reflect.GeneratedMethodAccessor217.invoke(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[?:1.8.0_341]
+	at java.lang.reflect.Method.invoke(Method.java:498) ~[?:1.8.0_341]
+	at org.mybatis.spring.SqlSessionTemplate$SqlSessionInterceptor.invoke(SqlSessionTemplate.java:427) ~[mybatis-spring-2.0.7.jar:2.0.7]
+	... 22 more
+Caused by: com.mysql.jdbc.exceptions.jdbc4.MySQLNonTransientConnectionException: Could not create connection to database server. Attempted reconnect 3 times. Giving up.
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance0(Native Method) ~[?:1.8.0_341]
+	at sun.reflect.NativeConstructorAccessorImpl.newInstance(NativeConstructorAccessorImpl.java:62) ~[?:1.8.0_341]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_341]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_341]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.Util.getInstance(Util.java:386) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:1015) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:989) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:975) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.SQLError.createSQLException(SQLError.java:920) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2388) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2309) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.26.jar:?]
+	at sun.reflect.GeneratedConstructorAccessor25.newInstance(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_341]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_341]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:156) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:787) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:150) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:227) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:150) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1659) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2801) ~[druid-1.2.6.jar:1.2.6]
+Caused by: com.mysql.jdbc.exceptions.jdbc4.CommunicationsException: Communications link failure
+
+The last packet sent successfully to the server was 0 milliseconds ago. The driver has not received any packets from the server.
+	at sun.reflect.GeneratedConstructorAccessor43.newInstance(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_341]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_341]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.SQLError.createCommunicationsException(SQLError.java:1121) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:357) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2482) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2327) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2309) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.26.jar:?]
+	at sun.reflect.GeneratedConstructorAccessor25.newInstance(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_341]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_341]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:156) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:787) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:150) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:227) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:150) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1659) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2801) ~[druid-1.2.6.jar:1.2.6]
+Caused by: java.net.UnknownHostException: dz.yhjxx.cn
+	at java.net.InetAddress.getAllByName0(InetAddress.java:1287) ~[?:1.8.0_341]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1199) ~[?:1.8.0_341]
+	at java.net.InetAddress.getAllByName(InetAddress.java:1127) ~[?:1.8.0_341]
+	at com.mysql.jdbc.StandardSocketFactory.connect(StandardSocketFactory.java:249) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.MysqlIO.<init>(MysqlIO.java:307) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.coreConnect(ConnectionImpl.java:2482) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.connectWithRetries(ConnectionImpl.java:2327) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.createNewIO(ConnectionImpl.java:2309) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.<init>(ConnectionImpl.java:834) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.JDBC4Connection.<init>(JDBC4Connection.java:47) ~[mysql-connector-java-5.1.26.jar:?]
+	at sun.reflect.GeneratedConstructorAccessor25.newInstance(Unknown Source) ~[?:?]
+	at sun.reflect.DelegatingConstructorAccessorImpl.newInstance(DelegatingConstructorAccessorImpl.java:45) ~[?:1.8.0_341]
+	at java.lang.reflect.Constructor.newInstance(Constructor.java:423) ~[?:1.8.0_341]
+	at com.mysql.jdbc.Util.handleNewInstance(Util.java:411) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.ConnectionImpl.getInstance(ConnectionImpl.java:416) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.mysql.jdbc.NonRegisteringDriver.connect(NonRegisteringDriver.java:346) ~[mysql-connector-java-5.1.26.jar:?]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:156) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterAdapter.connection_connect(FilterAdapter.java:787) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:150) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.stat.StatFilter.connection_connect(StatFilter.java:227) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.filter.FilterChainImpl.connection_connect(FilterChainImpl.java:150) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1659) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidAbstractDataSource.createPhysicalConnection(DruidAbstractDataSource.java:1723) ~[druid-1.2.6.jar:1.2.6]
+	at com.alibaba.druid.pool.DruidDataSource$CreateConnectionThread.run(DruidDataSource.java:2801) ~[druid-1.2.6.jar:1.2.6]
