@@ -2,4 +2,6 @@
 /logs/
 /.settings/
 /.idea/
+src/main/resources/db.properties
+
 
